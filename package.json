@@ -1,7 +1,7 @@
 {
   "name": "nemjs",
-  "version": "0.1.0",
-  "description": "A simple backend library of services made with JavaScript",
+  "version": "0.1.1",
+  "description": "A JavaScript Backend Service Library",
   "keywords": [
     "javascript",
     "library",
@@ -10,6 +10,9 @@
   ],
   "license": "Apache-2.0 License",
   "main": "nem.js",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "repository": "github:philippebeck/nemjs",
   "bugs": "https://github.com/philippebeck/nemjs/issues",
   "dependencies": {
