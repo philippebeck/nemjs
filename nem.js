@@ -6,7 +6,7 @@
  * @param {*} res 
  * @param {*} next 
  */
-exports.checkAuth = (req, res, next) => {
+exports.auth = (req, res, next) => {
   const jwt = require("jsonwebtoken");
 
   try {
@@ -35,12 +35,12 @@ exports.checkAuth = (req, res, next) => {
  * @param {*} user 
  * @returns 
  */
-exports.checkLogin = (req, res, user) => {
+exports.login = (req, res, user) => {
   const bcrypt = require("bcrypt");
   const jwt = require("jsonwebtoken");
 
   if (!user) {
-    return res.status(401).json({ error: process.env.CHECK_LOGIN_EMAIL });
+    return res.status(401).json({ error: process.env.LOGIN_EMAIL });
   }
 
   bcrypt
@@ -48,7 +48,7 @@ exports.checkLogin = (req, res, user) => {
     .then((valid) => {
 
       if (!valid) {
-        return res.status(401).json({ error: process.env.CHECK_LOGIN_PASS });
+        return res.status(401).json({ error: process.env.LOGIN_PASS });
       }
 
       res.status(200).json({
@@ -69,7 +69,7 @@ exports.checkLogin = (req, res, user) => {
  * @param {*} res 
  * @returns 
  */
-exports.checkUser = (req, res) => {
+exports.user = (req, res) => {
   const emailValidator = require("email-validator"); 
   const passValidator = require("password-validator");
   const schema = new passValidator();
@@ -83,19 +83,19 @@ exports.checkUser = (req, res) => {
     .has().not().spaces();
 
   if (!emailValidator.validate(req.body.email)) {
-    return res.status(401).json({ message: process.env.CHECK_USER_EMAIL });
+    return res.status(401).json({ message: process.env.USER_EMAIL });
   }
 
   if (!schema.validate(req.body.pass)) {
-    return res.status(401).json({ message: process.env.CHECK_USER_PASS });
+    return res.status(401).json({ message: process.env.USER_PASS });
   }
 }
 
 /**
- * GET TRANSPORTER
+ * GET MAILER
  * @returns 
  */
-exports.getTransporter = () => {
+exports.mailer = () => {
   const nodemailer = require("nodemailer");
 
   const transport = {
