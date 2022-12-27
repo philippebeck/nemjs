@@ -6,7 +6,7 @@
  * @param {*} res 
  * @param {*} next 
  */
-exports.auth = (req, res, next) => {
+exports.checkAuth = (req, res, next) => {
   const jwt = require("jsonwebtoken");
 
   try {
@@ -35,7 +35,7 @@ exports.auth = (req, res, next) => {
  * @param {*} user 
  * @returns 
  */
-exports.login = (req, res, user) => {
+exports.checkLogin = (req, res, user) => {
   const bcrypt = require("bcrypt");
   const jwt = require("jsonwebtoken");
 
@@ -69,7 +69,7 @@ exports.login = (req, res, user) => {
  * @param {*} res 
  * @returns 
  */
-exports.user = (req, res) => {
+exports.checkUser = (req, res) => {
   const emailValidator = require("email-validator"); 
   const passValidator = require("password-validator");
   const schema = new passValidator();
@@ -95,7 +95,7 @@ exports.user = (req, res) => {
  * GET MAILER
  * @returns 
  */
-exports.mailer = () => {
+exports.createMailer = () => {
   const nodemailer = require("nodemailer");
 
   const transport = {
