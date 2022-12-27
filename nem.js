@@ -2,9 +2,9 @@
 
 /**
  * CHECK AUTH
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {object} req 
+ * @param {object} res 
+ * @param {function} next 
  */
 exports.checkAuth = (req, res, next) => {
   const jwt = require("jsonwebtoken");
@@ -30,9 +30,9 @@ exports.checkAuth = (req, res, next) => {
 
 /**
  * CHECK LOGIN
- * @param {*} req 
- * @param {*} res 
- * @param {*} user 
+ * @param {object} req 
+ * @param {object} res 
+ * @param {object} user 
  * @returns 
  */
 exports.checkLogin = (req, res, user) => {
@@ -65,8 +65,8 @@ exports.checkLogin = (req, res, user) => {
 
 /**
  * CHECK USER
- * @param {*} req 
- * @param {*} res 
+ * @param {object} req 
+ * @param {object} res 
  * @returns 
  */
 exports.checkUser = (req, res) => {
