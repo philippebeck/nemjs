@@ -1,6 +1,6 @@
 {
   "name": "nemjs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A JavaScript Backend Service Library",
   "keywords": [
     "javascript",
@@ -16,11 +16,12 @@
   "repository": "github:philippebeck/nemjs",
   "bugs": "https://github.com/philippebeck/nemjs/issues",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "email-validator": "^2.0.4",
-    "jsonwebtoken": "^8.5.1",
-    "nodemailer": "^6.7.3",
-    "password-validator": "^5.2.1"
+    "jsonwebtoken": "^9.0.0",
+    "nodemailer": "^6.8.0",
+    "password-validator": "^5.3.0"
   },
   "author": {
     "name": "Philippe Beck",

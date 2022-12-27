@@ -1,18 +1,20 @@
 "use strict";
 
+require("dotenv").config();
+
 /**
  * CHECK AUTH
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
+ * @param {object} req 
+ * @param {object} res 
+ * @param {function} next 
  */
-exports.auth = (req, res, next) => {
+exports.checkAuth = (req, res, next) => {
   const jwt = require("jsonwebtoken");
 
   try {
-    const token = req.headers.authorization.split(" ")[1];
+    const token     = req.headers.authorization.split(" ")[1];
     const tokenData = jwt.verify(token, process.env.JWT);
-    const userId = tokenData.userId;
+    const userId    = tokenData.userId;
 
     req.auth = { userId };
 
@@ -30,14 +32,14 @@ exports.auth = (req, res, next) => {
 
 /**
  * CHECK LOGIN
- * @param {*} req 
- * @param {*} res 
- * @param {*} user 
+ * @param {object} req 
+ * @param {object} res 
+ * @param {object} user 
  * @returns 
  */
-exports.login = (req, res, user) => {
-  const bcrypt = require("bcrypt");
-  const jwt = require("jsonwebtoken");
+exports.checkLogin = (req, res, user) => {
+  const bcrypt  = require("bcrypt");
+  const jwt     = require("jsonwebtoken");
 
   if (!user) {
     return res.status(401).json({ error: process.env.LOGIN_EMAIL });
@@ -65,14 +67,14 @@ exports.login = (req, res, user) => {
 
 /**
  * CHECK USER
- * @param {*} req 
- * @param {*} res 
+ * @param {object} req 
+ * @param {object} res 
  * @returns 
  */
-exports.user = (req, res) => {
-  const emailValidator = require("email-validator"); 
-  const passValidator = require("password-validator");
-  const schema = new passValidator();
+exports.checkUser = (req, res) => {
+  const emailValidator  = require("email-validator"); 
+  const passValidator   = require("password-validator");
+  const schema          = new passValidator();
 
   schema
     .is().min(process.env.PASS_MIN)
@@ -92,10 +94,10 @@ exports.user = (req, res) => {
 }
 
 /**
- * GET MAILER
+ * CREATE MAILER
  * @returns 
  */
-exports.mailer = () => {
+exports.createMailer = () => {
   const nodemailer = require("nodemailer");
 
   const transport = {
