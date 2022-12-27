@@ -10,9 +10,9 @@ exports.checkAuth = (req, res, next) => {
   const jwt = require("jsonwebtoken");
 
   try {
-    const token = req.headers.authorization.split(" ")[1];
+    const token     = req.headers.authorization.split(" ")[1];
     const tokenData = jwt.verify(token, process.env.JWT);
-    const userId = tokenData.userId;
+    const userId    = tokenData.userId;
 
     req.auth = { userId };
 
@@ -36,8 +36,8 @@ exports.checkAuth = (req, res, next) => {
  * @returns 
  */
 exports.checkLogin = (req, res, user) => {
-  const bcrypt = require("bcrypt");
-  const jwt = require("jsonwebtoken");
+  const bcrypt  = require("bcrypt");
+  const jwt     = require("jsonwebtoken");
 
   if (!user) {
     return res.status(401).json({ error: process.env.LOGIN_EMAIL });
@@ -70,9 +70,9 @@ exports.checkLogin = (req, res, user) => {
  * @returns 
  */
 exports.checkUser = (req, res) => {
-  const emailValidator = require("email-validator"); 
-  const passValidator = require("password-validator");
-  const schema = new passValidator();
+  const emailValidator  = require("email-validator"); 
+  const passValidator   = require("password-validator");
+  const schema          = new passValidator();
 
   schema
     .is().min(process.env.PASS_MIN)
@@ -92,7 +92,7 @@ exports.checkUser = (req, res) => {
 }
 
 /**
- * GET MAILER
+ * CREATE MAILER
  * @returns 
  */
 exports.createMailer = () => {
