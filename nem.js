@@ -1,5 +1,7 @@
 "use strict";
 
+require("dotenv").config();
+
 /**
  * CHECK AUTH
  * @param {object} req 
