@@ -24,7 +24,6 @@ exports.checkAuth = (req, res, next) => {
     } else {
       next();
     }
-
   } catch {
     res.status(401).json({ error: new Error(process.env.AUTH_REQ) });
   }
@@ -42,6 +41,7 @@ exports.checkLogin = (req, res, user) => {
   const jwt     = require("jsonwebtoken");
 
   if (!user) {
+
     return res.status(401).json({ error: process.env.LOGIN_EMAIL });
   }
 
@@ -50,6 +50,7 @@ exports.checkLogin = (req, res, user) => {
     .then((valid) => {
 
       if (!valid) {
+
         return res.status(401).json({ error: process.env.LOGIN_PASS });
       }
 
