@@ -3,7 +3,7 @@
 require("dotenv").config();
 
 /**
- * CHECK AUTH
+ * CHECK ROUTE AUTHENTICATION
  * @param {object} req 
  * @param {object} res 
  * @param {function} next 
@@ -24,14 +24,13 @@ exports.checkAuth = (req, res, next) => {
     } else {
       next();
     }
-
   } catch {
     res.status(401).json({ error: new Error(process.env.AUTH_REQ) });
   }
 };
 
 /**
- * CHECK LOGIN
+ * CHECK USER LOGIN
  * @param {object} req 
  * @param {object} res 
  * @param {object} user 
@@ -42,6 +41,7 @@ exports.checkLogin = (req, res, user) => {
   const jwt     = require("jsonwebtoken");
 
   if (!user) {
+
     return res.status(401).json({ error: process.env.LOGIN_EMAIL });
   }
 
@@ -50,6 +50,7 @@ exports.checkLogin = (req, res, user) => {
     .then((valid) => {
 
       if (!valid) {
+
         return res.status(401).json({ error: process.env.LOGIN_PASS });
       }
 
@@ -66,15 +67,29 @@ exports.checkLogin = (req, res, user) => {
 }
 
 /**
- * CHECK USER
- * @param {object} req 
+ * CHECK USER EMAIL
+ * @param {string} email 
  * @param {object} res 
  * @returns 
  */
-exports.checkUser = (req, res) => {
+exports.checkEmail = (email, res) => {
   const emailValidator  = require("email-validator"); 
-  const passValidator   = require("password-validator");
-  const schema          = new passValidator();
+
+  if (!emailValidator.validate(email)) {
+
+    return res.status(401).json({ message: process.env.USER_EMAIL });
+  }
+}
+
+/**
+ * CHECK USER PASSWORD
+ * @param {string} pass 
+ * @param {object} res 
+ * @returns 
+ */
+exports.checkPass = (pass, res) => {
+  const passValidator = require("password-validator");
+  const schema        = new passValidator();
 
   schema
     .is().min(process.env.PASS_MIN)
@@ -84,17 +99,14 @@ exports.checkUser = (req, res) => {
     .has().digits(process.env.PASS_INT)
     .has().not().spaces();
 
-  if (!emailValidator.validate(req.body.email)) {
-    return res.status(401).json({ message: process.env.USER_EMAIL });
-  }
+  if (!schema.validate(pass)) {
 
-  if (!schema.validate(req.body.pass)) {
     return res.status(401).json({ message: process.env.USER_PASS });
   }
 }
 
 /**
- * CREATE MAILER
+ * CREATE CONTACT MAILER
  * @returns 
  */
 exports.createMailer = () => {
