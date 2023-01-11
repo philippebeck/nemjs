@@ -68,14 +68,28 @@ exports.checkLogin = (req, res, user) => {
 
 /**
  * CHECK USER EMAIL
- * @param {object} req 
+ * @param {string} email 
  * @param {object} res 
  * @returns 
  */
-exports.checkUser = (req, res) => {
+exports.checkEmail = (email, res) => {
   const emailValidator  = require("email-validator"); 
-  const passValidator   = require("password-validator");
-  const schema          = new passValidator();
+
+  if (!emailValidator.validate(email)) {
+
+    return res.status(401).json({ message: process.env.USER_EMAIL });
+  }
+}
+
+/**
+ * CHECK USER PASSWORD
+ * @param {string} pass 
+ * @param {object} res 
+ * @returns 
+ */
+exports.checkPass = (pass, res) => {
+  const passValidator = require("password-validator");
+  const schema        = new passValidator();
 
   schema
     .is().min(process.env.PASS_MIN)
@@ -85,11 +99,8 @@ exports.checkUser = (req, res) => {
     .has().digits(process.env.PASS_INT)
     .has().not().spaces();
 
-  if (!emailValidator.validate(req.body.email)) {
-    return res.status(401).json({ message: process.env.USER_EMAIL });
-  }
+  if (!schema.validate(pass)) {
 
-  if (!schema.validate(req.body.pass)) {
     return res.status(401).json({ message: process.env.USER_PASS });
   }
 }
