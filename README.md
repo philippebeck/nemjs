@@ -43,10 +43,11 @@ Yarn : `yarn add nemjs`
 
 ## Content
 
--   **checkAuth(req, res, next)** : check authenticated routes  
+-   **checkAuth(req, res, next)** : check route authentication  
 -   **checkLogin(req, res, user)** : check user login  
--   **checkUser(req, res)** : check user credentials  
--   **createMailer()** : create the mailer  
+-   **checkEmail(email, res)** : check user email  
+-   **checkPass(pass, res)** : check user pass  
+-   **createMailer()** : create contact mailer  
 
 ---
 
@@ -57,5 +58,6 @@ Yarn : `yarn add nemjs`
 3.  Then use it like these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.checkLogin(req, res, user)`  
-    -  `nem.checkUser(req, res)`  
+    -  `nem.checkEmail(email, res)`  
+    -  `nem.checkPass(pass, res)`  
     -  `const mailer = nem.createMailer()`  
