@@ -1,3 +1,5 @@
+/*! nemjs v0.2.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+
 "use strict";
 
 require("dotenv").config();
@@ -124,3 +126,5 @@ exports.createMailer = () => {
 
   return nodemailer.createTransport(transport);
 }
+
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 12th Jan 2023 */
