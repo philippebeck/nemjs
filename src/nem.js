@@ -3,7 +3,7 @@
 require("dotenv").config();
 
 /**
- * CHECK ROUTE AUTHENTICATION
+ * CHECK AUTHENTICATION
  * @param {object} req 
  * @param {object} res 
  * @param {function} next 
@@ -30,7 +30,7 @@ exports.checkAuth = (req, res, next) => {
 };
 
 /**
- * CHECK USER LOGIN
+ * CHECK LOGIN
  * @param {string} pass 
  * @param {object} user 
  * @param {object} res 
@@ -67,7 +67,7 @@ exports.checkLogin = (pass, user, res) => {
 }
 
 /**
- * CHECK USER EMAIL
+ * CHECK EMAIL
  * @param {string} email 
  * @param {object} res 
  * @returns 
@@ -82,7 +82,7 @@ exports.checkEmail = (email, res) => {
 }
 
 /**
- * CHECK USER PASSWORD
+ * CHECK PASSWORD
  * @param {string} pass 
  * @param {object} res 
  * @returns 
