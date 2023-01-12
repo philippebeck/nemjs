@@ -31,12 +31,12 @@ exports.checkAuth = (req, res, next) => {
 
 /**
  * CHECK USER LOGIN
- * @param {object} req 
- * @param {object} res 
+ * @param {string} pass 
  * @param {object} user 
+ * @param {object} res 
  * @returns 
  */
-exports.checkLogin = (req, res, user) => {
+exports.checkLogin = (pass, user, res) => {
   const bcrypt  = require("bcrypt");
   const jwt     = require("jsonwebtoken");
 
@@ -46,7 +46,7 @@ exports.checkLogin = (req, res, user) => {
   }
 
   bcrypt
-    .compare(req.body.pass, user.pass)
+    .compare(pass, user.pass)
     .then((valid) => {
 
       if (!valid) {
