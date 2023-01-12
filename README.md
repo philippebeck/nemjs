@@ -15,8 +15,9 @@ A JavaScript Backend Service Library
 ## Overview
 
 nemjs is a JavaScript Backend Service Library.  
-You will find Checking Services & Mailer Setting for the moment.  
+You will find some Checking Services & some Creating Services for the moment.  
 Checking Services are useful for login, signup & routing about email & password.  
+Creating Services are useful for image & mailer.  
 
 ## Summary
 
@@ -47,11 +48,12 @@ Yarn : `yarn add nemjs`
 
 ## Content
 
--   **checkAuth(req, res, next)** : check route authentication  
--   **checkLogin(pass, user, res)** : check user login  
--   **checkEmail(email, res)** : check user email  
--   **checkPass(pass, res)** : check user pass  
--   **createMailer()** : create contact mailer  
+-   **checkAuth(req, res, next)** : check authentication  
+-   **checkLogin(pass, user, res)** : check login  
+-   **checkEmail(email, res)** : check email  
+-   **checkPass(pass, res)** : check pass  
+-   **createImage(inputImg, outputImg)** : create image  
+-   **createMailer()** : create mailer  
 
 ---
 
@@ -61,7 +63,8 @@ Yarn : `yarn add nemjs`
 2.  Add `const nem = require("nemjs")` where you need (file or function top level)
 3.  Then use it like these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
-    -  `nem.checkLogin(pass, user, res)`  
-    -  `nem.checkEmail(email, res)`  
-    -  `nem.checkPass(pass, res)`  
+    -  `nem.checkLogin(guest.password, user, res)`  
+    -  `nem.checkEmail(guest.email, res)`  
+    -  `nem.checkPass(guest.password, res)`  
+    -  `nem.createImage(uploadImage, newImage);`  
     -  `const mailer = nem.createMailer()`  
