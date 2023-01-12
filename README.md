@@ -15,6 +15,8 @@ A JavaScript Backend Service Library
 ## Overview
 
 nemjs is a JavaScript Backend Service Library.  
+You will find Checking Services & Mailer Setting for the moment.  
+Checking Services are useful for login, signup & routing about email & password.  
 
 ## Summary
 
