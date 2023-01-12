@@ -15,6 +15,7 @@
   },
   "repository": "github:philippebeck/nemjs",
   "bugs": "https://github.com/philippebeck/nemjs/issues",
+  "homepage": "https://www.npmjs.com/package/nemjs",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
