@@ -6,7 +6,11 @@
     "javascript",
     "library",
     "backend",
-    "services"
+    "services",
+    "token",
+    "credentials",
+    "images",
+    "mailer"
   ],
   "license": "Apache-2.0 License",
   "main": "nem.js",
