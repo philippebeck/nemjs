@@ -1,25 +1,23 @@
 /**
  * CHECK EMAIL
  * @param {string} email 
- * @param {object} res 
  * @returns 
  */
-exports.checkEmail = (email, res) => {
+exports.checkEmail = (email) => {
   const emailValidator  = require("email-validator"); 
 
   if (!emailValidator.validate(email)) {
-
-    return res.status(401).json({ message: process.env.USER_EMAIL });
+    return false;
   }
+  return true;
 }
 
 /**
  * CHECK PASSWORD
  * @param {string} pass 
- * @param {object} res 
  * @returns 
  */
-exports.checkPass = (pass, res) => {
+exports.checkPass = (pass) => {
   const passValidator = require("password-validator");
   const schema        = new passValidator();
 
@@ -32,7 +30,7 @@ exports.checkPass = (pass, res) => {
     .has().not().spaces();
 
   if (!schema.validate(pass)) {
-
-    return res.status(401).json({ message: process.env.USER_PASS });
+    return false;
   }
+  return true;
 }
