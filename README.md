@@ -48,12 +48,13 @@ Yarn : `yarn add nemjs`
 
 ## Content
 
--   **checkAuth(req, res, next)** : check authentication  
+-   **checkAuth(req, res, next)** : check routes authentication  
 -   **checkLogin(pass, user, res)** : check login  
--   **checkEmail(email, res)** : check email  
--   **checkPass(pass, res)** : check pass  
+-   **checkEmail(email, res)** : check email for signup  
+-   **checkPass(pass, res)** : check pass for signup  
 -   **createImage(inputImg, outputImg)** : create image  
 -   **createMailer()** : create mailer  
+-   **createMessage()** : create message for mailer  
 
 ---
 
@@ -68,3 +69,4 @@ Yarn : `yarn add nemjs`
     -  `nem.checkPass(guest.password, res)`  
     -  `nem.createImage(uploadImage, newImage);`  
     -  `const mailer = nem.createMailer()`  
+    -  `let message = nem.createMessage(req)`  

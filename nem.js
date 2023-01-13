@@ -1,4 +1,4 @@
-/*! nemjs v0.3.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.4.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -149,4 +149,21 @@ exports.createMailer = () => {
   return nodemailer.createTransport(transport);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 12th Jan 2023 */
+/**
+ * CREATE MESSAGE
+ * @param {object} req 
+ * @returns 
+ */
+exports.createMessage = (req) => {
+  const host = req.get("host");
+
+  return { 
+    from: process.env.MAIL_USER, 
+    to: req.body.email, 
+    bcc: process.env.MAIL_USER,
+    subject: `${host} : ${req.body.title}`, 
+    text: req.body.message
+  };
+}
+
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 13th Jan 2023 */
