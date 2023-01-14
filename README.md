@@ -58,7 +58,7 @@ Yarn : `yarn add nemjs`
 
 ## Usage
 
-1.  Copie the `.env.example` file to your project root, rename it `.env` & replace values with your own values
+1.  Copy the `.env.example` file to your project root, rename it `.env` & replace values with your own values
 2.  Add `const nem = require("nemjs")` where you need (file or function top level)
 3.  Then use it like these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  

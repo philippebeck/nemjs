@@ -20,17 +20,16 @@ exports.createMailer = () => {
 
 /**
  * CREATE MESSAGE
- * @param {object} req 
+ * @param {object} message 
  * @returns 
  */
-exports.createMessage = (req) => {
-  const host = req.get("host");
+exports.createMessage = (message) => {
 
   return { 
     from: process.env.MAIL_USER, 
-    to: req.body.email, 
+    to: message.email, 
     bcc: process.env.MAIL_USER,
-    subject: `${host} : ${req.body.title}`, 
-    text: req.body.message
+    subject: message.subject, 
+    text: message.text
   };
 }
