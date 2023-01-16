@@ -1,4 +1,4 @@
-/*! nemjs v0.4.2 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.5.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -43,7 +43,6 @@ exports.checkLogin = (pass, user, res) => {
   const jwt     = require("jsonwebtoken");
 
   if (!user) {
-
     return res.status(401).json({ error: process.env.LOGIN_EMAIL });
   }
 
@@ -52,7 +51,6 @@ exports.checkLogin = (pass, user, res) => {
     .then((valid) => {
 
       if (!valid) {
-
         return res.status(401).json({ error: process.env.LOGIN_PASS });
       }
 
@@ -103,6 +101,22 @@ exports.checkPass = (pass) => {
     return false;
   }
   return true;
+}
+
+/**
+ * GENERATE PASSWORD
+ * @returns 
+ */
+exports.generatePass = () => {
+  const generator = require("generate-password");
+
+  let pass = generator.generate({
+    length: process.env.GENERATE_LENGTH,
+    numbers: process.env.GENERATE_NUMBERS,
+    symbols: process.env.GENERATE_SYMBOLS
+  });
+
+  return pass;
 }
 
 /**
@@ -163,4 +177,4 @@ exports.createMessage = (message) => {
   };
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 15th Jan 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 16th Jan 2023 */
