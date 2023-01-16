@@ -1,4 +1,4 @@
-/*! nemjs v0.5.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.5.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -113,7 +113,8 @@ exports.generatePass = () => {
   let pass = generator.generate({
     length: process.env.GENERATE_LENGTH,
     numbers: process.env.GENERATE_NUMBERS,
-    symbols: process.env.GENERATE_SYMBOLS
+    symbols: process.env.GENERATE_SYMBOLS,
+    strict: process.env.GENERATE_STRICT
   });
 
   return pass;

@@ -1,6 +1,6 @@
 {
   "name": "nemjs",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "A JavaScript Backend Service Library",
   "keywords": [
     "javascript",
