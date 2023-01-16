@@ -34,3 +34,19 @@ exports.checkPass = (pass) => {
   }
   return true;
 }
+
+/**
+ * GENERATE PASSWORD
+ * @returns 
+ */
+exports.generatePass = () => {
+  const generator = require("generate-password");
+
+  let pass = generator.generate({
+    length: process.env.GENERATE_LENGTH,
+    numbers: process.env.GENERATE_NUMBERS,
+    symbols: process.env.GENERATE_SYMBOLS
+  });
+
+  return pass;
+}
