@@ -45,7 +45,8 @@ exports.generatePass = () => {
   let pass = generator.generate({
     length: process.env.GENERATE_LENGTH,
     numbers: process.env.GENERATE_NUMBERS,
-    symbols: process.env.GENERATE_SYMBOLS
+    symbols: process.env.GENERATE_SYMBOLS,
+    strict: process.env.GENERATE_STRICT
   });
 
   return pass;
