@@ -4,12 +4,12 @@
  * @returns 
  */
 exports.checkEmail = (email) => {
-  const emailValidator  = require("email-validator"); 
+  const emailValidator = require("email-validator"); 
 
-  if (!emailValidator.validate(email)) {
-    return false;
+  if (emailValidator.validate(email)) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 /**
@@ -29,10 +29,10 @@ exports.checkPass = (pass) => {
     .has().digits(process.env.PASS_INT)
     .has().not().spaces();
 
-  if (!schema.validate(pass)) {
-    return false;
+  if (schema.validate(pass)) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 /**
@@ -50,4 +50,18 @@ exports.generatePass = () => {
   });
 
   return pass;
+}
+
+/**
+ * CHECK URL
+ * @param {string} url 
+ * @returns 
+ */
+exports.checkUrl = (url) => {
+  const validUrl = require("valid-url");
+
+  if (validUrl.isUri(url)) {
+    return true;
+  }
+  return false;
 }
