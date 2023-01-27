@@ -51,6 +51,7 @@ Yarn : `yarn add nemjs`
 -   **checkEmail(email)** : check email for signup  
 -   **checkPass(pass)** : check pass for signup  
 -   **generatePass()** : generate password for forgotten password  
+-   **checkUrl(url)** : check url  
 -   **createImage(inputImg, outputImg)** : create image  
 -   **createMailer()** : create mailer  
 -   **createMessage()** : create message for mailer  
@@ -64,9 +65,10 @@ Yarn : `yarn add nemjs`
 3.  Then use it like these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.checkLogin(guest.password, user, res)`  
-    -  `if (!nem.checkEmail(guest.email)) { ... }`  
-    -  `if (!nem.checkPass(guest.password)) { ... }`  
+    -  `if (nem.checkEmail(guest.email)) { ... }`  
+    -  `if (nem.checkPass(guest.password)) { ... }`  
     -  `let pass = nem.generatePass();`  
+    -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.createImage(uploadImage, newImage);`  
     -  `const mailer = nem.createMailer()`  
     -  `let message = nem.createMessage(req)`  
