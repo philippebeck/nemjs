@@ -1,4 +1,4 @@
-/*! nemjs v0.5.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.6.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -72,12 +72,12 @@ exports.checkLogin = (pass, user, res) => {
  * @returns 
  */
 exports.checkEmail = (email) => {
-  const emailValidator  = require("email-validator"); 
+  const emailValidator = require("email-validator"); 
 
-  if (!emailValidator.validate(email)) {
-    return false;
+  if (emailValidator.validate(email)) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 /**
@@ -97,10 +97,10 @@ exports.checkPass = (pass) => {
     .has().digits(process.env.PASS_INT)
     .has().not().spaces();
 
-  if (!schema.validate(pass)) {
-    return false;
+  if (schema.validate(pass)) {
+    return true;
   }
-  return true;
+  return false;
 }
 
 /**
@@ -118,6 +118,20 @@ exports.generatePass = () => {
   });
 
   return pass;
+}
+
+/**
+ * CHECK URL
+ * @param {string} url 
+ * @returns 
+ */
+exports.checkUrl = (url) => {
+  const validUrl = require("valid-url");
+
+  if (validUrl.isUri(url)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -178,4 +192,4 @@ exports.createMessage = (message) => {
   };
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 16th Jan 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 27th Jan 2023 */
