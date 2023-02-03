@@ -1,4 +1,4 @@
-/*! nemjs v0.6.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.7.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -157,6 +157,41 @@ exports.createImage = (inputImg, outputImg) => {
 }
 
 /**
+ * CREATE THUMBNAIL
+ * @param {string} inputImg 
+ * @param {string} outputImg 
+ * @returns
+ */
+exports.createThumbnail = (inputImg, outputImg) => {
+  const sharp = require('sharp');
+
+  sharp(process.env.IMG_URL + inputImg)
+    .resize(
+      parseInt(process.env.THUMB_WIDTH, 10), 
+      parseInt(process.env.THUMB_HEIGHT, 10),
+      { 
+        fit: process.env.THUMB_FIT,
+        position: process.env.IMG_POSITION 
+      }
+    )
+    .toFormat(process.env.THUMB_EXT)
+    .toFile(process.env.THUMB_URL + outputImg);
+}
+
+/**
+ * GET IMAGE NAME
+ * @param {string} name 
+ */
+exports.getImgName = (name) => {
+  const accents = require("remove-accents");
+
+  return accents
+    .remove(name)
+    .replace(/ /g, "-")
+    .toLowerCase() + "-" + Date.now() + "." + process.env.IMG_EXT;
+}
+
+/**
  * CREATE MAILER
  * @returns 
  */
@@ -192,4 +227,4 @@ exports.createMessage = (message) => {
   };
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 27th Jan 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 4th Feb 2023 */
