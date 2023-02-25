@@ -1,4 +1,4 @@
-/*! nemjs v0.7.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.7.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -223,8 +223,8 @@ exports.createMessage = (message) => {
     to: message.email, 
     bcc: process.env.MAIL_USER,
     subject: message.subject, 
-    text: message.text
+    html: message.html
   };
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 4th Feb 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 25th Feb 2023 */

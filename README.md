@@ -54,6 +54,7 @@ Yarn : `yarn add nemjs`
 -   **generatePass()** : generate password for forgotten password  
 -   **checkUrl(url)** : check url  
 -   **createImage(inputImg, outputImg)** : create image  
+-   **createThumbnail(inputImg, outputImg)** : create thumbnail  
 -   **createMailer()** : create mailer  
 -   **createMessage()** : create message for mailer  
 
@@ -71,5 +72,6 @@ Yarn : `yarn add nemjs`
     -  `let pass = nem.generatePass();`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.createImage(uploadImage, newImage);`  
+    -  `nem.createThumbnail(uploadImage, newImage);`  
     -  `const mailer = nem.createMailer()`  
     -  `let message = nem.createMessage(req)`  
