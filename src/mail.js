@@ -30,6 +30,6 @@ exports.createMessage = (message) => {
     to: message.email, 
     bcc: process.env.MAIL_USER,
     subject: message.subject, 
-    text: message.text
+    html: message.html
   };
 }
