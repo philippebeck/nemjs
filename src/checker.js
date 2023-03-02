@@ -9,6 +9,22 @@ exports.checkEmail = (email) => {
   if (emailValidator.validate(email)) {
     return true;
   }
+
+  return false;
+}
+
+/**
+ * CHECK NAME
+ * @param {string} name 
+ * @returns 
+ */
+exports.checkName = (name) => {
+  if (name.length >= process.env.NAME_MIN && 
+    name.length <= process.env.NAME_MAX) {
+
+    return true;
+  }
+
   return false;
 }
 
@@ -32,24 +48,23 @@ exports.checkPass = (pass) => {
   if (schema.validate(pass)) {
     return true;
   }
+
   return false;
 }
 
 /**
- * GENERATE PASSWORD
+ * CHECK TEXT
+ * @param {string} text 
  * @returns 
  */
-exports.generatePass = () => {
-  const generator = require("generate-password");
+exports.checkText = (text) => {
+  if (text.length >= process.env.TEXT_MIN && 
+    text.length <= process.env.TEXT_MAX) {
 
-  let pass = generator.generate({
-    length: process.env.GENERATE_LENGTH,
-    numbers: process.env.GENERATE_NUMBERS,
-    symbols: process.env.GENERATE_SYMBOLS,
-    strict: process.env.GENERATE_STRICT
-  });
+    return true;
+  }
 
-  return pass;
+  return false;
 }
 
 /**
@@ -63,5 +78,6 @@ exports.checkUrl = (url) => {
   if (validUrl.isUri(url)) {
     return true;
   }
+
   return false;
 }

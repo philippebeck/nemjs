@@ -6,7 +6,7 @@ module.exports = function(grunt) {
         banner: "/*! <%= pkg.name %> v<%= pkg.version %> | <%= pkg.homepage %> | <%= pkg.license %> */\n\n", 
         footer: "\n/*! Author: <%= pkg.author.name %> <<%= pkg.author.email %>> | Updated: <%= grunt.template.today('dS mmm yyyy') %> */"},
       js: {
-        src: ["src/init.js", "src/token.js", "src/string.js", "src/image.js", "src/mail.js", ],
+        src: ["src/init.js", "src/token.js", "src/checker.js", "src/getter.js", "src/image.js", "src/mail.js", ],
         dest: "nem.js"}
     }
   });

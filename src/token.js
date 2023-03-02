@@ -37,7 +37,7 @@ exports.checkLogin = (pass, user, res) => {
   const jwt     = require("jsonwebtoken");
 
   if (!user) {
-    return res.status(401).json({ error: process.env.LOGIN_EMAIL });
+    return res.status(404).json({ error: process.env.LOGIN_EMAIL });
   }
 
   bcrypt
@@ -57,5 +57,5 @@ exports.checkLogin = (pass, user, res) => {
         )
       });
     })
-    .catch((error) => res.status(500).json({ error }));
+    .catch((error) => res.status(400).json({ error }));
 }

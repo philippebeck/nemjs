@@ -2,7 +2,6 @@
  * CREATE IMAGE
  * @param {string} inputImg 
  * @param {string} outputImg 
- * @returns
  */
 exports.createImage = (inputImg, outputImg) => {
   const sharp = require('sharp');
@@ -24,7 +23,6 @@ exports.createImage = (inputImg, outputImg) => {
  * CREATE THUMBNAIL
  * @param {string} inputImg 
  * @param {string} outputImg 
- * @returns
  */
 exports.createThumbnail = (inputImg, outputImg) => {
   const sharp = require('sharp');
@@ -45,6 +43,7 @@ exports.createThumbnail = (inputImg, outputImg) => {
 /**
  * GET IMAGE NAME
  * @param {string} name 
+ * @returns
  */
 exports.getImgName = (name) => {
   const accents = require("remove-accents");

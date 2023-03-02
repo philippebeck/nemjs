@@ -1,4 +1,4 @@
-/*! nemjs v0.7.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.8.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -43,7 +43,7 @@ exports.checkLogin = (pass, user, res) => {
   const jwt     = require("jsonwebtoken");
 
   if (!user) {
-    return res.status(401).json({ error: process.env.LOGIN_EMAIL });
+    return res.status(404).json({ error: process.env.LOGIN_EMAIL });
   }
 
   bcrypt
@@ -63,7 +63,7 @@ exports.checkLogin = (pass, user, res) => {
         )
       });
     })
-    .catch((error) => res.status(500).json({ error }));
+    .catch((error) => res.status(400).json({ error }));
 }
 
 /**
@@ -77,6 +77,22 @@ exports.checkEmail = (email) => {
   if (emailValidator.validate(email)) {
     return true;
   }
+
+  return false;
+}
+
+/**
+ * CHECK NAME
+ * @param {string} name 
+ * @returns 
+ */
+exports.checkName = (name) => {
+  if (name.length >= process.env.NAME_MIN && 
+    name.length <= process.env.NAME_MAX) {
+
+    return true;
+  }
+
   return false;
 }
 
@@ -100,6 +116,37 @@ exports.checkPass = (pass) => {
   if (schema.validate(pass)) {
     return true;
   }
+
+  return false;
+}
+
+/**
+ * CHECK TEXT
+ * @param {string} text 
+ * @returns 
+ */
+exports.checkText = (text) => {
+  if (text.length >= process.env.TEXT_MIN && 
+    text.length <= process.env.TEXT_MAX) {
+
+    return true;
+  }
+
+  return false;
+}
+
+/**
+ * CHECK URL
+ * @param {string} url 
+ * @returns 
+ */
+exports.checkUrl = (url) => {
+  const validUrl = require("valid-url");
+
+  if (validUrl.isUri(url)) {
+    return true;
+  }
+
   return false;
 }
 
@@ -121,24 +168,24 @@ exports.generatePass = () => {
 }
 
 /**
- * CHECK URL
- * @param {string} url 
+ * CONVERT STRING TO ARRAY
+ * @param {string} string 
  * @returns 
  */
-exports.checkUrl = (url) => {
-  const validUrl = require("valid-url");
+exports.stringToArray = (string) => {
+  let array = string.split(",");
 
-  if (validUrl.isUri(url)) {
-    return true;
+  if (array[0] === "") { 
+    array.shift();
   }
-  return false;
+
+  return array;
 }
 
 /**
  * CREATE IMAGE
  * @param {string} inputImg 
  * @param {string} outputImg 
- * @returns
  */
 exports.createImage = (inputImg, outputImg) => {
   const sharp = require('sharp');
@@ -160,7 +207,6 @@ exports.createImage = (inputImg, outputImg) => {
  * CREATE THUMBNAIL
  * @param {string} inputImg 
  * @param {string} outputImg 
- * @returns
  */
 exports.createThumbnail = (inputImg, outputImg) => {
   const sharp = require('sharp');
@@ -181,6 +227,7 @@ exports.createThumbnail = (inputImg, outputImg) => {
 /**
  * GET IMAGE NAME
  * @param {string} name 
+ * @returns
  */
 exports.getImgName = (name) => {
   const accents = require("remove-accents");
@@ -227,4 +274,4 @@ exports.createMessage = (message) => {
   };
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 25th Feb 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 2nd Mar 2023 */
