@@ -47,16 +47,18 @@ Yarn : `yarn add nemjs`
 
 ## Content
 
--   **checkAuth(req, res, next)** : check routes authentication  
--   **checkLogin(pass, user, res)** : check login  
--   **checkEmail(email)** : check email for signup  
--   **checkPass(pass)** : check pass for signup  
--   **generatePass()** : generate password for forgotten password  
--   **checkUrl(url)** : check url  
+-   **checkAuth(req, res, next)** : check JWT auth to routes  
+-   **checkLogin(pass, user, res)** : compare passwords & sign JWT  
+-   **checkEmail(email)** : check email validity  
+-   **checkName(name)** : check name length  
+-   **checkPass(pass)** : check pass validity  
+-   **checkText(text)** : check text length  
+-   **checkUrl(url)** : check url validity  
+-   **generatePass()** : generate password  
 -   **createImage(inputImg, outputImg)** : create image  
 -   **createThumbnail(inputImg, outputImg)** : create thumbnail  
 -   **createMailer()** : create mailer  
--   **createMessage()** : create message for mailer  
+-   **createMessage(message)** : create message  
 
 ---
 
@@ -68,8 +70,10 @@ Yarn : `yarn add nemjs`
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.checkLogin(guest.password, user, res)`  
     -  `if (nem.checkEmail(guest.email)) { ... }`  
+    -  `if (nem.checkName(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
     -  `let pass = nem.generatePass();`  
+    -  `if (nem.checkText(item.text)) { ... }`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.createImage(uploadImage, newImage);`  
     -  `nem.createThumbnail(uploadImage, newImage);`  
