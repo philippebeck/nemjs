@@ -1,19 +1,4 @@
 /**
- * CONVERT STRING TO ARRAY
- * @param {string} string 
- * @returns 
- */
-exports.stringToArray = (string) => {
-  let array = string.split(",");
-
-  if (array[0] === "") { 
-    array.shift();
-  }
-
-  return array;
-}
-
-/**
  * GENERATE PASSWORD
  * @returns 
  */
@@ -28,4 +13,19 @@ exports.generatePass = () => {
   });
 
   return pass;
+}
+
+/**
+ * CONVERT STRING TO ARRAY
+ * @param {string} string 
+ * @returns 
+ */
+exports.stringToArray = (string) => {
+  let array = string.split(",");
+
+  if (array[0] === "") { 
+    array.shift();
+  }
+
+  return array;
 }
