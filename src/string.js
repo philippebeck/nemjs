@@ -13,6 +13,21 @@ exports.checkEmail = (email) => {
 }
 
 /**
+ * CHECK NAME
+ * @param {string} name 
+ * @returns 
+ */
+exports.checkName = (name) => {
+  if (name.length >= process.env.NAME_MIN && 
+    name.length <= process.env.NAME_MAX) {
+
+    return true;
+  }
+
+  return false;
+}
+
+/**
  * CHECK PASSWORD
  * @param {string} pass 
  * @returns 
