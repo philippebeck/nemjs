@@ -16,7 +16,7 @@ JavaScript Backend Service Library
 ## Overview
 
 nemjs is a JavaScript Backend Service Library.  
-You will find some Services about Tokens, String, Images & Mails  
+You will find some Services with Checkers, Getters & Setters  
 
 ## Summary
 
