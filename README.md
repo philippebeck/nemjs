@@ -75,7 +75,7 @@ Yarn : `yarn add nemjs`
     -  `if (nem.checkEmail(guest.email)) { ... }`  
     -  `if (nem.checkName(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
-    -  `let pass = nem.generatePass();`  
+    -  `let pass = nem.getGeneratePass();`  
     -  `if (nem.checkText(item.text)) { ... }`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.setImage(uploadImage, newImage);`  
