@@ -1,3 +1,32 @@
+//! ******************** CHECKERS ********************
+
+/**
+ * CHECK AUTHENTICATION
+ * @param {object} req 
+ * @param {object} res 
+ * @param {function} next 
+ */
+exports.checkAuth = (req, res, next) => {
+  const jwt = require("jsonwebtoken");
+
+  try {
+    const token     = req.headers.authorization.split(" ")[1];
+    const tokenData = jwt.verify(token, process.env.JWT);
+    const userId    = tokenData.userId;
+
+    req.auth = { userId };
+
+    if (req.body.userId && req.body.userId !== userId) {
+      throw process.env.AUTH_ID;
+      
+    } else {
+      next();
+    }
+  } catch {
+    res.status(401).json({ error: new Error(process.env.AUTH_REQ) });
+  }
+};
+
 /**
  * CHECK EMAIL
  * @param {string} email 
