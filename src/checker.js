@@ -50,8 +50,9 @@ exports.checkEmail = (email) => {
  * @returns 
  */
 exports.checkNumber = (number, min = process.env.NUM_MIN, max = process.env.NUM_MAX) => {
-  if (typeof number === "number" && number >= min && number <= max) {
+  number = Number(number);
 
+  if (number >= min && number <= max) {
     return true;
   }
 
@@ -90,8 +91,9 @@ exports.checkPass = (pass) => {
  * @returns 
  */
 exports.checkString = (string, min = process.env.STRING_MIN, max = process.env.STRING_MAX) => {
-  if (typeof string === "string" && string.length >= min && string.length <= max) {
+  string = String(string);
 
+  if (string.length >= min && string.length <= max) {
     return true;
   }
 
