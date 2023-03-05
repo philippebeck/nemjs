@@ -48,18 +48,20 @@ Yarn : `yarn add nemjs`
 ## Content
 
 -   **checkAuth(req, res, next)** : check JWT auth to routes  
--   **checkLogin(pass, user, res)** : compare passwords & sign JWT  
 -   **checkEmail(email)** : check email validity  
 -   **checkName(name)** : check name length  
 -   **checkPass(pass)** : check pass validity  
+-   **checkString(string)** : check string type & empty value  
 -   **checkText(text)** : check text length  
 -   **checkUrl(url)** : check url validity  
--   **getArrayFromString(string)** : format string & return array   
--   **getGeneratePass()** : generate & return password  
--   **createImage(inputImg, outputImg)** : create image  
--   **createThumbnail(inputImg, outputImg)** : create thumbnail  
--   **createMailer()** : create mailer  
--   **createMessage(message)** : create message  
+-   **getArrayFromString(string)** : get array from string  
+-   **getGeneratePass()** : get generate password  
+-   **getImgName(name)** : get image name
+-   **getMailer()** : get mailer  
+-   **getMessage(message)** : get message  
+-   **setAuth(pass, user, res)** : set JWT  
+-   **setImage(inputImg, outputImg)** : set image  
+-   **setThumbnail(inputImg, outputImg)** : set thumbnail  
 
 ---
 
@@ -69,14 +71,14 @@ Yarn : `yarn add nemjs`
 2.  Add `const nem = require("nemjs")` where you need (file or function top level)
 3.  Then use it like these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
-    -  `nem.checkLogin(guest.password, user, res)`  
+    -  `nem.setAuth(guest.password, user, res)`  
     -  `if (nem.checkEmail(guest.email)) { ... }`  
     -  `if (nem.checkName(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
     -  `let pass = nem.generatePass();`  
     -  `if (nem.checkText(item.text)) { ... }`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
-    -  `nem.createImage(uploadImage, newImage);`  
-    -  `nem.createThumbnail(uploadImage, newImage);`  
-    -  `const mailer = nem.createMailer()`  
-    -  `let message = nem.createMessage(req)`  
+    -  `nem.setImage(uploadImage, newImage);`  
+    -  `nem.setThumbnail(uploadImage, newImage);`  
+    -  `const mailer = nem.getMailer()`  
+    -  `let message = nem.getMessage(req)`  
