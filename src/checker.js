@@ -43,13 +43,14 @@ exports.checkEmail = (email) => {
 }
 
 /**
- * CHECK NAME
- * @param {string} name 
+ * CHECK NUMBER
+ * @param {number} number
+ * @param {number} min
+ * @param {number} max
  * @returns 
  */
-exports.checkName = (name) => {
-  if (name.length >= process.env.NAME_MIN && 
-    name.length <= process.env.NAME_MAX) {
+exports.checkNumber = (number, min = process.env.NUM_MIN, max = process.env.NUM_MAX) => {
+  if (typeof number === "number" && number >= min && number <= max) {
 
     return true;
   }
@@ -83,26 +84,13 @@ exports.checkPass = (pass) => {
 
 /**
  * CHECK STRING
- * @param {string} string 
+ * @param {string} string
+ * @param {number} min
+ * @param {number} max
  * @returns 
  */
-exports.checkString = (string) => {
-  if (typeof string === "string" && string !== "") {
-
-    return true;
-  }
-
-  return false;
-}
-
-/**
- * CHECK TEXT
- * @param {string} text 
- * @returns 
- */
-exports.checkText = (text) => {
-  if (text.length >= process.env.TEXT_MIN && 
-    text.length <= process.env.TEXT_MAX) {
+exports.checkString = (string, min = process.env.STRING_MIN, max = process.env.STRING_MAX) => {
+  if (typeof string === "string" && string.length >= min && string.length <= max) {
 
     return true;
   }
