@@ -49,10 +49,9 @@ Yarn : `yarn add nemjs`
 
 -   **checkAuth(req, res, next)** : check JWT auth to routes  
 -   **checkEmail(email)** : check email validity  
--   **checkName(name)** : check name length  
+-   **checkNumber(number, min, max)** : check number min/max  
 -   **checkPass(pass)** : check pass validity  
--   **checkString(string)** : check string type & empty value  
--   **checkText(text)** : check text length  
+-   **checkString(string, min, max)** : check string min/max  
 -   **checkUrl(url)** : check url validity  
 -   **getArrayFromString(string)** : get array from string  
 -   **getGeneratePass()** : get generate password  
@@ -73,10 +72,10 @@ Yarn : `yarn add nemjs`
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.setAuth(guest.password, user, res)`  
     -  `if (nem.checkEmail(guest.email)) { ... }`  
-    -  `if (nem.checkName(guest.name)) { ... }`  
+    -  `if (nem.checkString(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
     -  `let pass = nem.getGeneratePass();`  
-    -  `if (nem.checkText(item.text)) { ... }`  
+    -  `if (nem.checkNumber(item.price, 1, 500)) { ... }`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.setImage(uploadImage, newImage);`  
     -  `nem.setThumbnail(uploadImage, newImage);`  
