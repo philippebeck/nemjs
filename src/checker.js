@@ -53,6 +53,20 @@ exports.checkPass = (pass) => {
 }
 
 /**
+ * CHECK STRING
+ * @param {string} string 
+ * @returns 
+ */
+exports.checkString = (string) => {
+  if (typeof string === "string" && string !== "") {
+
+    return true;
+  }
+
+  return false;
+}
+
+/**
  * CHECK TEXT
  * @param {string} text 
  * @returns 
