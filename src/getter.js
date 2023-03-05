@@ -1,8 +1,23 @@
 /**
- * GENERATE PASSWORD
+ * GET ARRAY FROM STRING
+ * @param {string} string 
  * @returns 
  */
-exports.generatePass = () => {
+exports.getArrayFromString = (string) => {
+  let array = string.split(",");
+
+  if (array[0] === "") { 
+    array.shift();
+  }
+
+  return array;
+}
+
+/**
+ * GET GENERATE PASSWORD
+ * @returns 
+ */
+exports.getGeneratePass = () => {
   const generator = require("generate-password");
 
   let pass = generator.generate({
@@ -13,19 +28,4 @@ exports.generatePass = () => {
   });
 
   return pass;
-}
-
-/**
- * CONVERT STRING TO ARRAY
- * @param {string} string 
- * @returns 
- */
-exports.stringToArray = (string) => {
-  let array = string.split(",");
-
-  if (array[0] === "") { 
-    array.shift();
-  }
-
-  return array;
 }

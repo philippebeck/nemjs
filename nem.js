@@ -1,4 +1,4 @@
-/*! nemjs v0.8.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v0.8.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -151,10 +151,25 @@ exports.checkUrl = (url) => {
 }
 
 /**
- * GENERATE PASSWORD
+ * GET ARRAY FROM STRING
+ * @param {string} string 
  * @returns 
  */
-exports.generatePass = () => {
+exports.getArrayFromString = (string) => {
+  let array = string.split(",");
+
+  if (array[0] === "") { 
+    array.shift();
+  }
+
+  return array;
+}
+
+/**
+ * GET GENERATE PASSWORD
+ * @returns 
+ */
+exports.getGeneratePass = () => {
   const generator = require("generate-password");
 
   let pass = generator.generate({
@@ -165,21 +180,6 @@ exports.generatePass = () => {
   });
 
   return pass;
-}
-
-/**
- * CONVERT STRING TO ARRAY
- * @param {string} string 
- * @returns 
- */
-exports.stringToArray = (string) => {
-  let array = string.split(",");
-
-  if (array[0] === "") { 
-    array.shift();
-  }
-
-  return array;
 }
 
 /**
@@ -274,4 +274,4 @@ exports.createMessage = (message) => {
   };
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 2nd Mar 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 5th Mar 2023 */

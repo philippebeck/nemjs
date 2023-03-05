@@ -54,8 +54,8 @@ Yarn : `yarn add nemjs`
 -   **checkPass(pass)** : check pass validity  
 -   **checkText(text)** : check text length  
 -   **checkUrl(url)** : check url validity  
--   **generatePass()** : generate & return password  
--   **stringToArray(string)** : format string & return array   
+-   **getArrayFromString(string)** : format string & return array   
+-   **getGeneratePass()** : generate & return password  
 -   **createImage(inputImg, outputImg)** : create image  
 -   **createThumbnail(inputImg, outputImg)** : create thumbnail  
 -   **createMailer()** : create mailer  
