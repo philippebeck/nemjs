@@ -1,8 +1,8 @@
 /**
- * GENERATE PASSWORD
+ * GET GENERATE PASSWORD
  * @returns 
  */
-exports.generatePass = () => {
+exports.getGeneratePass = () => {
   const generator = require("generate-password");
 
   let pass = generator.generate({
@@ -16,11 +16,11 @@ exports.generatePass = () => {
 }
 
 /**
- * CONVERT STRING TO ARRAY
+ * GET ARRAY FROM STRING
  * @param {string} string 
  * @returns 
  */
-exports.stringToArray = (string) => {
+exports.getArrayFromString = (string) => {
   let array = string.split(",");
 
   if (array[0] === "") { 
