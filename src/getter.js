@@ -1,4 +1,19 @@
 /**
+ * GET ARRAY FROM STRING
+ * @param {string} string 
+ * @returns 
+ */
+exports.getArrayFromString = (string) => {
+  let array = string.split(",");
+
+  if (array[0] === "") { 
+    array.shift();
+  }
+
+  return array;
+}
+
+/**
  * GET GENERATE PASSWORD
  * @returns 
  */
@@ -13,19 +28,4 @@ exports.getGeneratePass = () => {
   });
 
   return pass;
-}
-
-/**
- * GET ARRAY FROM STRING
- * @param {string} string 
- * @returns 
- */
-exports.getArrayFromString = (string) => {
-  let array = string.split(",");
-
-  if (array[0] === "") { 
-    array.shift();
-  }
-
-  return array;
 }
