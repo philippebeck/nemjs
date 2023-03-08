@@ -47,17 +47,22 @@ Yarn : `yarn add nemjs`
 
 ## Content
 
+Checker part :  
 -   **checkAuth(req, res, next)** : check JWT auth to routes  
 -   **checkEmail(email)** : check email validity  
 -   **checkNumber(number, min, max)** : check number min/max  
--   **checkPass(pass)** : check pass validity  
+-   **checkPass(pass)** : check password validity  
 -   **checkString(string, min, max)** : check string min/max  
 -   **checkUrl(url)** : check url validity  
+
+Getter part :  
 -   **getArrayFromString(string)** : get array from string  
--   **getGeneratePass()** : get generate password  
+-   **getGeneratePass()** : get generated password  
 -   **getImgName(name)** : get image name
 -   **getMailer()** : get mailer  
 -   **getMessage(message)** : get message  
+
+Setter part :  
 -   **setAuth(pass, user, res)** : set JWT  
 -   **setImage(inputImg, outputImg)** : set image  
 -   **setThumbnail(inputImg, outputImg)** : set thumbnail  
