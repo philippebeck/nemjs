@@ -78,7 +78,7 @@ Setter part :
 
 1.  Copy the `.env.example` file to your project root, rename it `.env` & replace values with your own values
 2.  Add `const nem = require("nemjs")` where you need (file or function top level)
-3.  Then use it like these examples : 
+3.  Then use it like in these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.setAuth(guest.password, user, res)`  
     -  `if (nem.checkEmail(guest.email)) { ... }`  
