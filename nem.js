@@ -1,4 +1,4 @@
-/*! nemjs v0.10.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.0.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -139,10 +139,10 @@ exports.getArrayFromString = (string) => {
 }
 
 /**
- * GET GENERATE PASSWORD
+ * GET NEW PASSWORD
  * @returns 
  */
-exports.getGeneratePass = () => {
+exports.getNewPass = () => {
   const generator = require("generate-password");
 
   let pass = generator.generate({
@@ -160,7 +160,7 @@ exports.getGeneratePass = () => {
  * @param {string} name 
  * @returns
  */
-exports.getImgName = (name) => {
+exports.getImageName = (name) => {
   const accents = require("remove-accents");
 
   return accents
@@ -277,11 +277,11 @@ exports.setThumbnail = (inputImg, outputImg) => {
       parseInt(process.env.THUMB_HEIGHT, 10),
       { 
         fit: process.env.THUMB_FIT,
-        position: process.env.IMG_POSITION 
+        position: process.env.THUMB_POSITION 
       }
     )
     .toFormat(process.env.THUMB_EXT)
     .toFile(process.env.THUMB_URL + outputImg);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 5th Mar 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 8th Mar 2023 */

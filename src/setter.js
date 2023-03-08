@@ -70,7 +70,7 @@ exports.setThumbnail = (inputImg, outputImg) => {
       parseInt(process.env.THUMB_HEIGHT, 10),
       { 
         fit: process.env.THUMB_FIT,
-        position: process.env.IMG_POSITION 
+        position: process.env.THUMB_POSITION 
       }
     )
     .toFormat(process.env.THUMB_EXT)

@@ -16,7 +16,10 @@ JavaScript Backend Service Library
 ## Overview
 
 nemjs is a JavaScript Backend Service Library.  
-You will find some Services about Tokens, String, Images & Mails  
+You will find some Services about Checkers, Getters & Setters  
+Auth services are using JWT & bcrypt  
+Mail services are using nodemailer  
+Image services are using sharp  
 
 ## Summary
 
@@ -40,24 +43,31 @@ Yarn : `yarn add nemjs`
 ## Download
 
 [Latest Release](https://github.com/philippebeck/nemjs/releases)  
-
+or  
 `git clone https://github.com/philippebeck/nemjs.git`  
-  
+or  
+[Master ZIP](https://github.com/philippebeck/nemjs/archive/refs/heads/master.zip)
+
 ---
 
 ## Content
 
+Checker part :  
 -   **checkAuth(req, res, next)** : check JWT auth to routes  
 -   **checkEmail(email)** : check email validity  
 -   **checkNumber(number, min, max)** : check number min/max  
--   **checkPass(pass)** : check pass validity  
+-   **checkPass(pass)** : check password validity  
 -   **checkString(string, min, max)** : check string min/max  
 -   **checkUrl(url)** : check url validity  
+
+Getter part :  
 -   **getArrayFromString(string)** : get array from string  
--   **getGeneratePass()** : get generate password  
+-   **getGeneratePass()** : get generated password  
 -   **getImgName(name)** : get image name
 -   **getMailer()** : get mailer  
 -   **getMessage(message)** : get message  
+
+Setter part :  
 -   **setAuth(pass, user, res)** : set JWT  
 -   **setImage(inputImg, outputImg)** : set image  
 -   **setThumbnail(inputImg, outputImg)** : set thumbnail  
@@ -68,7 +78,7 @@ Yarn : `yarn add nemjs`
 
 1.  Copy the `.env.example` file to your project root, rename it `.env` & replace values with your own values
 2.  Add `const nem = require("nemjs")` where you need (file or function top level)
-3.  Then use it like these examples : 
+3.  Then use it like in these examples : 
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.setAuth(guest.password, user, res)`  
     -  `if (nem.checkEmail(guest.email)) { ... }`  

@@ -16,10 +16,10 @@ exports.getArrayFromString = (string) => {
 }
 
 /**
- * GET GENERATE PASSWORD
+ * GET NEW PASSWORD
  * @returns 
  */
-exports.getGeneratePass = () => {
+exports.getNewPass = () => {
   const generator = require("generate-password");
 
   let pass = generator.generate({
@@ -37,7 +37,7 @@ exports.getGeneratePass = () => {
  * @param {string} name 
  * @returns
  */
-exports.getImgName = (name) => {
+exports.getImageName = (name) => {
   const accents = require("remove-accents");
 
   return accents
