@@ -16,7 +16,10 @@ JavaScript Backend Service Library
 ## Overview
 
 nemjs is a JavaScript Backend Service Library.  
-You will find some Services with Checkers, Getters & Setters  
+You will find some Services about Checkers, Getters & Setters  
+Auth services are using JWT & bcrypt  
+Mail services are using nodemailer  
+Image services are using sharp  
 
 ## Summary
 
@@ -40,9 +43,11 @@ Yarn : `yarn add nemjs`
 ## Download
 
 [Latest Release](https://github.com/philippebeck/nemjs/releases)  
-
+or  
 `git clone https://github.com/philippebeck/nemjs.git`  
-  
+or  
+[Master ZIP](https://github.com/philippebeck/nemjs/archive/refs/heads/master.zip)
+
 ---
 
 ## Content
