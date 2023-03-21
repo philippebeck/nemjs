@@ -1,4 +1,4 @@
-/*! nemjs v1.0.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.1.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -135,6 +135,24 @@ exports.getArrayFromString = (string) => {
     array.shift();
   }
 
+  return array;
+}
+
+/**
+ * GET ARRAY WITH USERNAME
+ * @param {array} array 
+ * @param {array} users 
+ * @returns 
+ */
+exports.getArrayWithUsername = (array, users) => {
+  for (let item of array) {
+    for (let user of users) {
+
+      if (item.user === user._id.toString()) {
+        item.user = user.name + "-" + item.user;
+      }
+    }
+  }
   return array;
 }
 
@@ -284,4 +302,4 @@ exports.setThumbnail = (inputImg, outputImg) => {
     .toFile(process.env.THUMB_URL + outputImg);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 8th Mar 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 21st Mar 2023 */
