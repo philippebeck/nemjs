@@ -62,6 +62,7 @@ Checker part :
 
 Getter part :  
 -   **getArrayFromString(string)** : get array from string  
+-   **getArrayWithUsername(array, users)** : get array with username  
 -   **getGeneratePass()** : get generated password  
 -   **getImgName(name)** : get image name
 -   **getMailer()** : get mailer  

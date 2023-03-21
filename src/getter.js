@@ -16,6 +16,24 @@ exports.getArrayFromString = (string) => {
 }
 
 /**
+ * GET ARRAY WITH USERNAME
+ * @param {array} array 
+ * @param {array} users 
+ * @returns 
+ */
+exports.getArrayWithUsername = (array, users) => {
+  for (let item of array) {
+    for (let user of users) {
+
+      if (item.user === user._id.toString()) {
+        item.user = user.name + "-" + item.user;
+      }
+    }
+  }
+  return array;
+}
+
+/**
  * GET NEW PASSWORD
  * @returns 
  */
