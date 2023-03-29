@@ -110,3 +110,20 @@ exports.getMessage = (message) => {
     html: message.html
   };
 }
+
+/**
+ * GET NEW PASSWORD
+ * @returns 
+ */
+exports.getNewPass = () => {
+  const generator = require("generate-password");
+
+  let pass = generator.generate({
+    length: process.env.GENERATE_LENGTH,
+    numbers: process.env.GENERATE_NUMBERS,
+    symbols: process.env.GENERATE_SYMBOLS,
+    strict: process.env.GENERATE_STRICT
+  });
+
+  return pass;
+}
