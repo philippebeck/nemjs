@@ -63,10 +63,12 @@ Checker part :
 Getter part :  
 -   **getArrayFromString(string)** : get array from string  
 -   **getArrayWithUsername(array, users)** : get array with username  
--   **getGeneratePass()** : get generated password  
--   **getImgName(name)** : get image name
+-   **getGalleryCoverName(name)** : get image name for gallery cover  
+-   **getGalleryName(name)** : get gallery name  
+-   **getImageName(name)** : get unique image name  
 -   **getMailer()** : get mailer  
 -   **getMessage(message)** : get message  
+-   **getNewPass()** : get generated password  
 
 Setter part :  
 -   **setAuth(pass, user, res)** : set JWT  

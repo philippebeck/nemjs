@@ -34,20 +34,31 @@ exports.getArrayWithUsername = (array, users) => {
 }
 
 /**
- * GET NEW PASSWORD
- * @returns 
+ * GET GALLERY COVER NAME
+ * @param {string} name 
+ * @returns
  */
-exports.getNewPass = () => {
-  const generator = require("generate-password");
+exports.getGalleryCoverName = (name) => {
+  const accents = require("remove-accents");
 
-  let pass = generator.generate({
-    length: process.env.GENERATE_LENGTH,
-    numbers: process.env.GENERATE_NUMBERS,
-    symbols: process.env.GENERATE_SYMBOLS,
-    strict: process.env.GENERATE_STRICT
-  });
+  return accents
+    .remove(name)
+    .replace(/ /g, "-")
+    .toLowerCase() + "-01." + process.env.IMG_EXT;
+}
 
-  return pass;
+/**
+ * GET GALLERY NAME
+ * @param {string} name 
+ * @returns
+ */
+exports.getGalleryName = (name) => {
+  const accents = require("remove-accents");
+
+  return accents
+    .remove(name)
+    .replace(/ /g, "-")
+    .toLowerCase();
 }
 
 /**
@@ -98,4 +109,21 @@ exports.getMessage = (message) => {
     subject: message.subject, 
     html: message.html
   };
+}
+
+/**
+ * GET NEW PASSWORD
+ * @returns 
+ */
+exports.getNewPass = () => {
+  const generator = require("generate-password");
+
+  let pass = generator.generate({
+    length: process.env.GENERATE_LENGTH,
+    numbers: process.env.GENERATE_NUMBERS,
+    symbols: process.env.GENERATE_SYMBOLS,
+    strict: process.env.GENERATE_STRICT
+  });
+
+  return pass;
 }
