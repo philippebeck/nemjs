@@ -49,7 +49,12 @@ exports.checkEmail = (email) => {
  * @param {number} max
  * @returns 
  */
-exports.checkNumber = (number, min = process.env.NUM_MIN, max = process.env.NUM_MAX) => {
+exports.checkNumber = (
+  number, 
+  min = process.env.NUM_MIN, 
+  max = process.env.NUM_MAX
+  ) => {
+
   number = Number(number);
 
   if (number >= min && number <= max) {
@@ -90,7 +95,12 @@ exports.checkPass = (pass) => {
  * @param {number} max
  * @returns 
  */
-exports.checkString = (string, min = process.env.STRING_MIN, max = process.env.STRING_MAX) => {
+exports.checkString = (
+  string, 
+  min = process.env.STRING_MIN,
+  max = process.env.STRING_MAX
+  ) => {
+
   string = String(string);
 
   if (string.length >= min && string.length <= max) {
