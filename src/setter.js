@@ -39,14 +39,22 @@ exports.setAuth = (pass, user, res) => {
  * SET IMAGE
  * @param {string} inputImg 
  * @param {string} outputImg 
+ * @param {number} width 
+ * @param {number} height 
  */
-exports.setImage = (inputImg, outputImg) => {
+exports.setImage = (
+  inputImg, 
+  outputImg, 
+  width = process.env.IMG_WIDTH, 
+  height = process.env.IMG_HEIGHT
+  ) => {
+
   const sharp = require('sharp');
 
   sharp(process.env.IMG_URL + inputImg)
     .resize(
-      parseInt(process.env.IMG_WIDTH, 10), 
-      parseInt(process.env.IMG_HEIGHT, 10),
+      parseInt(width, 10), 
+      parseInt(height, 10),
       { 
         fit: process.env.IMG_FIT,
         position: process.env.IMG_POSITION 
@@ -60,14 +68,22 @@ exports.setImage = (inputImg, outputImg) => {
  * SET THUMBNAIL
  * @param {string} inputImg 
  * @param {string} outputImg 
+ * @param {number} width 
+ * @param {number} height 
  */
-exports.setThumbnail = (inputImg, outputImg) => {
+exports.setThumbnail = (
+  inputImg, 
+  outputImg, 
+  width = process.env.IMG_WIDTH, 
+  height = process.env.IMG_HEIGHT
+  ) => {
+
   const sharp = require('sharp');
 
   sharp(process.env.IMG_URL + inputImg)
     .resize(
-      parseInt(process.env.THUMB_WIDTH, 10), 
-      parseInt(process.env.THUMB_HEIGHT, 10),
+      parseInt(width, 10), 
+      parseInt(height, 10),
       { 
         fit: process.env.THUMB_FIT,
         position: process.env.THUMB_POSITION 
