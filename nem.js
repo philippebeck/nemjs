@@ -1,4 +1,4 @@
-/*! nemjs v1.2.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.3.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -55,7 +55,12 @@ exports.checkEmail = (email) => {
  * @param {number} max
  * @returns 
  */
-exports.checkNumber = (number, min = process.env.NUM_MIN, max = process.env.NUM_MAX) => {
+exports.checkNumber = (
+  number, 
+  min = process.env.NUM_MIN, 
+  max = process.env.NUM_MAX
+  ) => {
+
   number = Number(number);
 
   if (number >= min && number <= max) {
@@ -96,7 +101,12 @@ exports.checkPass = (pass) => {
  * @param {number} max
  * @returns 
  */
-exports.checkString = (string, min = process.env.STRING_MIN, max = process.env.STRING_MAX) => {
+exports.checkString = (
+  string, 
+  min = process.env.STRING_MIN,
+  max = process.env.STRING_MAX
+  ) => {
+
   string = String(string);
 
   if (string.length >= min && string.length <= max) {
@@ -292,14 +302,22 @@ exports.setAuth = (pass, user, res) => {
  * SET IMAGE
  * @param {string} inputImg 
  * @param {string} outputImg 
+ * @param {number} width 
+ * @param {number} height 
  */
-exports.setImage = (inputImg, outputImg) => {
+exports.setImage = (
+  inputImg, 
+  outputImg, 
+  width = process.env.IMG_WIDTH, 
+  height = process.env.IMG_HEIGHT
+  ) => {
+
   const sharp = require('sharp');
 
   sharp(process.env.IMG_URL + inputImg)
     .resize(
-      parseInt(process.env.IMG_WIDTH, 10), 
-      parseInt(process.env.IMG_HEIGHT, 10),
+      parseInt(width, 10), 
+      parseInt(height, 10),
       { 
         fit: process.env.IMG_FIT,
         position: process.env.IMG_POSITION 
@@ -313,14 +331,22 @@ exports.setImage = (inputImg, outputImg) => {
  * SET THUMBNAIL
  * @param {string} inputImg 
  * @param {string} outputImg 
+ * @param {number} width 
+ * @param {number} height 
  */
-exports.setThumbnail = (inputImg, outputImg) => {
+exports.setThumbnails = (
+  inputImg, 
+  outputImg, 
+  width = process.env.IMG_WIDTH, 
+  height = process.env.IMG_HEIGHT
+  ) => {
+
   const sharp = require('sharp');
 
   sharp(process.env.IMG_URL + inputImg)
     .resize(
-      parseInt(process.env.THUMB_WIDTH, 10), 
-      parseInt(process.env.THUMB_HEIGHT, 10),
+      parseInt(width, 10), 
+      parseInt(height, 10),
       { 
         fit: process.env.THUMB_FIT,
         position: process.env.THUMB_POSITION 
@@ -330,4 +356,4 @@ exports.setThumbnail = (inputImg, outputImg) => {
     .toFile(process.env.THUMB_URL + outputImg);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 29th Mar 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 30th Mar 2023 */
