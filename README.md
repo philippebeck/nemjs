@@ -72,8 +72,8 @@ Getter part :
 
 Setter part :  
 -   **setAuth(pass, user, res)** : set JWT  
--   **setImage(inputImg, outputImg)** : set image  
--   **setThumbnail(inputImg, outputImg)** : set thumbnail  
+-   **setImage(inputImg, outputImg, width, height)** : set image  
+-   **setThumbnail(inputImg, outputImg, width, height)** : set thumbnail  
 
 ---
 
