@@ -1,4 +1,4 @@
-/*! nemjs v1.3.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.3.2 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -302,27 +302,11 @@ exports.setAuth = (pass, user, res) => {
  * SET IMAGE
  * @param {string} inputImg 
  * @param {string} outputImg 
- * @param {number} width 
- * @param {number} height 
  */
-exports.setImage = (
-  inputImg, 
-  outputImg, 
-  width = process.env.IMG_WIDTH, 
-  height = process.env.IMG_HEIGHT
-  ) => {
-
+exports.setImage = (inputImg, outputImg) => {
   const sharp = require('sharp');
 
   sharp(process.env.IMG_URL + inputImg)
-    .resize(
-      parseInt(width, 10), 
-      parseInt(height, 10),
-      { 
-        fit: process.env.IMG_FIT,
-        position: process.env.IMG_POSITION 
-      }
-    )
     .toFormat(process.env.IMG_EXT)
     .toFile(process.env.IMG_URL + outputImg);
 }
@@ -337,8 +321,8 @@ exports.setImage = (
 exports.setThumbnail = (
   inputImg, 
   outputImg, 
-  width = process.env.IMG_WIDTH, 
-  height = process.env.IMG_HEIGHT
+  width = process.env.THUMB_WIDTH, 
+  height = process.env.THUMB_HEIGHT
   ) => {
 
   const sharp = require('sharp');
