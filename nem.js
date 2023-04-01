@@ -1,4 +1,4 @@
-/*! nemjs v1.3.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.3.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -334,7 +334,7 @@ exports.setImage = (
  * @param {number} width 
  * @param {number} height 
  */
-exports.setThumbnails = (
+exports.setThumbnail = (
   inputImg, 
   outputImg, 
   width = process.env.IMG_WIDTH, 
@@ -356,4 +356,4 @@ exports.setThumbnails = (
     .toFile(process.env.THUMB_URL + outputImg);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 30th Mar 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 1st Apr 2023 */
