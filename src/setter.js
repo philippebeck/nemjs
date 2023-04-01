@@ -74,8 +74,8 @@ exports.setImage = (
 exports.setThumbnail = (
   inputImg, 
   outputImg, 
-  width = process.env.IMG_WIDTH, 
-  height = process.env.IMG_HEIGHT
+  width = process.env.THUMB_WIDTH, 
+  height = process.env.THUMB_HEIGHT
   ) => {
 
   const sharp = require('sharp');
