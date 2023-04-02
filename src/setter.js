@@ -37,34 +37,34 @@ exports.setAuth = (pass, user, res) => {
 
 /**
  * SET IMAGE
- * @param {string} inputImg 
- * @param {string} outputImg 
+ * @param {string} input 
+ * @param {string} output 
  */
-exports.setImage = (inputImg, outputImg) => {
+exports.setImage = (input, output) => {
   const sharp = require('sharp');
 
-  sharp(process.env.IMG_URL + inputImg)
+  sharp(process.env.IMG_URL + input)
     .toFormat(process.env.IMG_EXT)
-    .toFile(process.env.IMG_URL + outputImg);
+    .toFile(output);
 }
 
 /**
  * SET THUMBNAIL
- * @param {string} inputImg 
- * @param {string} outputImg 
+ * @param {string} input 
+ * @param {string} output 
  * @param {number} width 
  * @param {number} height 
  */
 exports.setThumbnail = (
-  inputImg, 
-  outputImg, 
+  input, 
+  output, 
   width = process.env.THUMB_WIDTH, 
   height = process.env.THUMB_HEIGHT
   ) => {
 
   const sharp = require('sharp');
 
-  sharp(process.env.IMG_URL + inputImg)
+  sharp(process.env.IMG_URL + input)
     .resize(
       parseInt(width, 10), 
       parseInt(height, 10),
@@ -74,5 +74,5 @@ exports.setThumbnail = (
       }
     )
     .toFormat(process.env.THUMB_EXT)
-    .toFile(process.env.THUMB_URL + outputImg);
+    .toFile(output);
 }
