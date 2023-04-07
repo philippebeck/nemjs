@@ -87,7 +87,7 @@ Setter part :
     -  `if (nem.checkEmail(guest.email)) { ... }`  
     -  `if (nem.checkString(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
-    -  `let pass = nem.getGeneratePass();`  
+    -  `let pass = nem.getPassword();`  
     -  `if (nem.checkNumber(item.price, 1, 500)) { ... }`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.setImage(uploadImage, newImage);`  
