@@ -30,6 +30,7 @@ exports.getArrayWithUsername = (array, users) => {
       }
     }
   }
+
   return array;
 }
 
