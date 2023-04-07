@@ -50,17 +50,14 @@ exports.getName = (name) => {
 }
 
 /**
- * GET GALLERY NAME
+ * GET POSTER NAME
  * @param {string} name 
  * @returns
  */
-exports.getGalleryName = (name) => {
-  const accents = require("remove-accents");
+exports.getPosterName = (name) => {
+  let posterName = getName(name) + "-01." + process.env.IMG_EXT;
 
-  return accents
-    .remove(name)
-    .replace(/ /g, "-")
-    .toLowerCase();
+  return posterName;
 }
 
 /**
