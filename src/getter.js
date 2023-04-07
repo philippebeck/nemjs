@@ -61,17 +61,14 @@ exports.getPosterName = (name) => {
 }
 
 /**
- * GET IMAGE NAME
+ * GET UNIQUE NAME
  * @param {string} name 
  * @returns
  */
-exports.getImageName = (name) => {
-  const accents = require("remove-accents");
+exports.getUniqueName = (name) => {
+  let uniqueName = getName(name) + "-" + Date.now();
 
-  return accents
-    .remove(name)
-    .replace(/ /g, "-")
-    .toLowerCase() + "-" + Date.now() + "." + process.env.IMG_EXT;
+  return uniqueName;
 }
 
 /**
