@@ -112,18 +112,18 @@ exports.getMessage = (data) => {
 }
 
 /**
- * GET NEW PASSWORD
+ * GET PASSWORD
  * @returns 
  */
-exports.getNewPass = () => {
+exports.getPassword = () => {
   const generator = require("generate-password");
 
-  let pass = generator.generate({
+  let password = generator.generate({
     length: process.env.GENERATE_LENGTH,
     numbers: process.env.GENERATE_NUMBERS,
     symbols: process.env.GENERATE_SYMBOLS,
     strict: process.env.GENERATE_STRICT
   });
 
-  return pass;
+  return password;
 }
