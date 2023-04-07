@@ -3,7 +3,7 @@
 /**
  * GET ARRAY FROM STRING
  * @param {string} string 
- * @returns 
+ * @returns {array}
  */
 exports.getArrayFromString = (string) => {
   let array = string.split(",");
@@ -19,7 +19,7 @@ exports.getArrayFromString = (string) => {
  * GET ARRAY WITH USERNAME
  * @param {array} array 
  * @param {array} users 
- * @returns 
+ * @returns {array}
  */
 exports.getArrayWithUsername = (array, users) => {
   for (let item of array) {
@@ -37,7 +37,7 @@ exports.getArrayWithUsername = (array, users) => {
 /**
  * GET NAME
  * @param {string} name 
- * @returns
+ * @returns {string}
  */
 exports.getName = (name) => {
   const accents = require("remove-accents");
@@ -53,7 +53,7 @@ exports.getName = (name) => {
 /**
  * GET POSTER NAME
  * @param {string} name 
- * @returns
+ * @returns {string}
  */
 exports.getPosterName = (name) => {
   let posterName = getName(name) + "-01." + process.env.IMG_EXT;
@@ -64,7 +64,7 @@ exports.getPosterName = (name) => {
 /**
  * GET UNIQUE NAME
  * @param {string} name 
- * @returns
+ * @returns {string}
  */
 exports.getUniqueName = (name) => {
   let uniqueName = getName(name) + "-" + Date.now();
@@ -74,7 +74,7 @@ exports.getUniqueName = (name) => {
 
 /**
  * GET MAILER
- * @returns 
+ * @returns {object}
  */
 exports.getMailer = () => {
   const nodemailer = require("nodemailer");
@@ -97,7 +97,7 @@ exports.getMailer = () => {
 /**
  * GET MESSAGE
  * @param {object} data 
- * @returns 
+ * @returns {object}
  */
 exports.getMessage = (data) => {
 
@@ -114,7 +114,7 @@ exports.getMessage = (data) => {
 
 /**
  * GET PASSWORD
- * @returns 
+ * @returns {string}
  */
 exports.getPassword = () => {
   const generator = require("generate-password");
