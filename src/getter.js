@@ -34,17 +34,19 @@ exports.getArrayWithUsername = (array, users) => {
 }
 
 /**
- * GET GALLERY COVER NAME
+ * GET NAME
  * @param {string} name 
  * @returns
  */
-exports.getGalleryCoverName = (name) => {
+exports.getName = (name) => {
   const accents = require("remove-accents");
 
-  return accents
+  name = accents
     .remove(name)
     .replace(/ /g, "-")
-    .toLowerCase() + "-01." + process.env.IMG_EXT;
+    .toLowerCase();
+
+  return name;
 }
 
 /**
