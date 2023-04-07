@@ -5,7 +5,7 @@
  * @param {string} pass 
  * @param {object} user 
  * @param {object} res 
- * @returns 
+ * @returns {object}
  */
 exports.setAuth = (pass, user, res) => {
   const bcrypt  = require("bcrypt");
