@@ -30,7 +30,7 @@ exports.checkAuth = (req, res, next) => {
 /**
  * CHECK EMAIL
  * @param {string} email 
- * @returns 
+ * @returns {boolean}
  */
 exports.checkEmail = (email) => {
   const emailValidator = require("email-validator"); 
@@ -47,7 +47,7 @@ exports.checkEmail = (email) => {
  * @param {number} number
  * @param {number} min
  * @param {number} max
- * @returns 
+ * @returns {boolean}
  */
 exports.checkNumber = (
   number, 
@@ -67,7 +67,7 @@ exports.checkNumber = (
 /**
  * CHECK PASSWORD
  * @param {string} pass 
- * @returns 
+ * @returns {boolean}
  */
 exports.checkPass = (pass) => {
   const passValidator = require("password-validator");
@@ -93,7 +93,7 @@ exports.checkPass = (pass) => {
  * @param {string} string
  * @param {number} min
  * @param {number} max
- * @returns 
+ * @returns {boolean}
  */
 exports.checkString = (
   string, 
@@ -113,7 +113,7 @@ exports.checkString = (
 /**
  * CHECK URL
  * @param {string} url 
- * @returns 
+ * @returns {boolean}
  */
 exports.checkUrl = (url) => {
   const validUrl = require("valid-url");

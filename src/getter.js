@@ -3,7 +3,7 @@
 /**
  * GET ARRAY FROM STRING
  * @param {string} string 
- * @returns 
+ * @returns {array}
  */
 exports.getArrayFromString = (string) => {
   let array = string.split(",");
@@ -19,7 +19,7 @@ exports.getArrayFromString = (string) => {
  * GET ARRAY WITH USERNAME
  * @param {array} array 
  * @param {array} users 
- * @returns 
+ * @returns {array}
  */
 exports.getArrayWithUsername = (array, users) => {
   for (let item of array) {
@@ -30,54 +30,51 @@ exports.getArrayWithUsername = (array, users) => {
       }
     }
   }
+
   return array;
 }
 
 /**
- * GET GALLERY COVER NAME
+ * GET NAME
  * @param {string} name 
- * @returns
+ * @returns {string}
  */
-exports.getGalleryCoverName = (name) => {
+exports.getName = (name) => {
   const accents = require("remove-accents");
 
-  return accents
-    .remove(name)
-    .replace(/ /g, "-")
-    .toLowerCase() + "-01." + process.env.IMG_EXT;
-}
-
-/**
- * GET GALLERY NAME
- * @param {string} name 
- * @returns
- */
-exports.getGalleryName = (name) => {
-  const accents = require("remove-accents");
-
-  return accents
+  name = accents
     .remove(name)
     .replace(/ /g, "-")
     .toLowerCase();
+
+  return name;
 }
 
 /**
- * GET IMAGE NAME
+ * GET POSTER NAME
  * @param {string} name 
- * @returns
+ * @returns {string}
  */
-exports.getImageName = (name) => {
-  const accents = require("remove-accents");
+exports.getPosterName = (name) => {
+  let posterName = getName(name) + "-01." + process.env.IMG_EXT;
 
-  return accents
-    .remove(name)
-    .replace(/ /g, "-")
-    .toLowerCase() + "-" + Date.now() + "." + process.env.IMG_EXT;
+  return posterName;
+}
+
+/**
+ * GET UNIQUE NAME
+ * @param {string} name 
+ * @returns {string}
+ */
+exports.getUniqueName = (name) => {
+  let uniqueName = getName(name) + "-" + Date.now();
+
+  return uniqueName;
 }
 
 /**
  * GET MAILER
- * @returns 
+ * @returns {object}
  */
 exports.getMailer = () => {
   const nodemailer = require("nodemailer");
@@ -92,38 +89,42 @@ exports.getMailer = () => {
     }
   };
 
-  return nodemailer.createTransport(transport);
+  let mailer = nodemailer.createTransport(transport);
+
+  return mailer;
 }
 
 /**
  * GET MESSAGE
- * @param {object} message 
- * @returns 
+ * @param {object} data 
+ * @returns {object}
  */
-exports.getMessage = (message) => {
+exports.getMessage = (data) => {
 
-  return { 
+  let message = { 
     from: process.env.MAIL_USER, 
-    to: message.email, 
+    to: data.email, 
     bcc: process.env.MAIL_USER,
-    subject: message.subject, 
-    html: message.html
+    subject: data.subject, 
+    html: data.html
   };
+
+  return message;
 }
 
 /**
- * GET NEW PASSWORD
- * @returns 
+ * GET PASSWORD
+ * @returns {string}
  */
-exports.getNewPass = () => {
+exports.getPassword = () => {
   const generator = require("generate-password");
 
-  let pass = generator.generate({
+  let password = generator.generate({
     length: process.env.GENERATE_LENGTH,
     numbers: process.env.GENERATE_NUMBERS,
     symbols: process.env.GENERATE_SYMBOLS,
     strict: process.env.GENERATE_STRICT
   });
 
-  return pass;
+  return password;
 }

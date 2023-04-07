@@ -63,12 +63,12 @@ Checker part :
 Getter part :  
 -   **getArrayFromString(string)** : get array from string  
 -   **getArrayWithUsername(array, users)** : get array with username  
--   **getGalleryCoverName(name)** : get image name for gallery cover  
--   **getGalleryName(name)** : get gallery name  
--   **getImageName(name)** : get unique image name  
--   **getMailer()** : get mailer  
+-   **getName(name)** : get kebab-case name  
+-   **getPosterName(name)** : get image name for gallery cover  
+-   **getUniqueName(name)** : get unique name with timestamp  
+-   **getMailer()** : get mailer with nodemailer  
 -   **getMessage(message)** : get message  
--   **getNewPass()** : get generated password  
+-   **getPassword()** : get generated password  
 
 Setter part :  
 -   **setAuth(pass, user, res)** : set JWT  
