@@ -88,7 +88,9 @@ exports.getMailer = () => {
     }
   };
 
-  return nodemailer.createTransport(transport);
+  let mailer = nodemailer.createTransport(transport);
+
+  return mailer;
 }
 
 /**
