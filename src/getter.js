@@ -93,18 +93,20 @@ exports.getMailer = () => {
 
 /**
  * GET MESSAGE
- * @param {object} message 
+ * @param {object} data 
  * @returns 
  */
-exports.getMessage = (message) => {
+exports.getMessage = (data) => {
 
-  return { 
+  let message = { 
     from: process.env.MAIL_USER, 
-    to: message.email, 
+    to: data.email, 
     bcc: process.env.MAIL_USER,
-    subject: message.subject, 
-    html: message.html
+    subject: data.subject, 
+    html: data.html
   };
+
+  return message;
 }
 
 /**
