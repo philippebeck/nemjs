@@ -1,4 +1,4 @@
-/*! nemjs v1.4.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.4.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -189,9 +189,8 @@ exports.getName = (name) => {
  * @returns {string}
  */
 exports.getPosterName = (name) => {
-  let posterName = getName(name) + "-01." + process.env.IMG_EXT;
 
-  return posterName;
+  return this.getName(name) + "-01." + process.env.IMG_EXT;
 }
 
 /**
@@ -200,9 +199,8 @@ exports.getPosterName = (name) => {
  * @returns {string}
  */
 exports.getUniqueName = (name) => {
-  let uniqueName = getName(name) + "-" + Date.now();
 
-  return uniqueName;
+  return this.getName(name) + "-" + Date.now();
 }
 
 /**
@@ -222,9 +220,7 @@ exports.getMailer = () => {
     }
   };
 
-  let mailer = nodemailer.createTransport(transport);
-
-  return mailer;
+  return nodemailer.createTransport(transport);
 }
 
 /**
@@ -234,15 +230,13 @@ exports.getMailer = () => {
  */
 exports.getMessage = (data) => {
 
-  let message = { 
+  return { 
     from: process.env.MAIL_USER, 
     to: data.email, 
     bcc: process.env.MAIL_USER,
     subject: data.subject, 
     html: data.html
   };
-
-  return message;
 }
 
 /**
@@ -252,14 +246,12 @@ exports.getMessage = (data) => {
 exports.getPassword = () => {
   const generator = require("generate-password");
 
-  let password = generator.generate({
+  return generator.generate({
     length: process.env.GENERATE_LENGTH,
     numbers: process.env.GENERATE_NUMBERS,
     symbols: process.env.GENERATE_SYMBOLS,
     strict: process.env.GENERATE_STRICT
   });
-
-  return password;
 }
 
 //! ******************** SETTERS ********************
@@ -341,4 +333,4 @@ exports.setThumbnail = (
     .toFile(output);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 7th Apr 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 13th May 2023 */
