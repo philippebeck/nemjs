@@ -56,9 +56,8 @@ exports.getName = (name) => {
  * @returns {string}
  */
 exports.getPosterName = (name) => {
-  let posterName = getName(name) + "-01." + process.env.IMG_EXT;
 
-  return posterName;
+  return this.getName(name) + "-01." + process.env.IMG_EXT;
 }
 
 /**
@@ -67,9 +66,8 @@ exports.getPosterName = (name) => {
  * @returns {string}
  */
 exports.getUniqueName = (name) => {
-  let uniqueName = getName(name) + "-" + Date.now();
 
-  return uniqueName;
+  return this.getName(name) + "-" + Date.now();
 }
 
 /**
@@ -89,9 +87,7 @@ exports.getMailer = () => {
     }
   };
 
-  let mailer = nodemailer.createTransport(transport);
-
-  return mailer;
+  return nodemailer.createTransport(transport);
 }
 
 /**
@@ -101,15 +97,13 @@ exports.getMailer = () => {
  */
 exports.getMessage = (data) => {
 
-  let message = { 
+  return { 
     from: process.env.MAIL_USER, 
     to: data.email, 
     bcc: process.env.MAIL_USER,
     subject: data.subject, 
     html: data.html
   };
-
-  return message;
 }
 
 /**
@@ -119,12 +113,10 @@ exports.getMessage = (data) => {
 exports.getPassword = () => {
   const generator = require("generate-password");
 
-  let password = generator.generate({
+  return generator.generate({
     length: process.env.GENERATE_LENGTH,
     numbers: process.env.GENERATE_NUMBERS,
     symbols: process.env.GENERATE_SYMBOLS,
     strict: process.env.GENERATE_STRICT
   });
-
-  return password;
 }
