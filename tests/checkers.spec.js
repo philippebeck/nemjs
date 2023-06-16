@@ -1,7 +1,6 @@
 //! ******************** CHECKERS ********************
 
-const assert  = require('assert');
-const jwt     = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 const { 
   checkAuth, 
@@ -14,7 +13,6 @@ const {
 const originalEnv = process.env;
 
 global.alert = jest.fn();
-global.res = jest.fn();
 
 beforeEach(() => {
   jest.resetModules();
@@ -39,18 +37,15 @@ afterEach(() => {
  * ? CHECK AUTH
  */
 describe("checkAuth()", () => {
+  const next = jest.fn();
 
   test("should return 401 if the token is invalid", () => {
-    const req = {
-      headers: { authorization: "Bearer invalid_token" }
-    };
-
+    const req = { headers: { authorization: "Bearer invalid_token" } };
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn()
     };
 
-    const next = jest.fn();
     jwt.verify = jest.fn(() => { throw new Error() });
     checkAuth(req, res, next);
 
@@ -64,13 +59,11 @@ describe("checkAuth()", () => {
       headers: { authorization: "Bearer valid_token" },
       body: { userId: "invalid_user_id" }
     };
-
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn()
     };
 
-    const next = jest.fn();
     jwt.verify = jest.fn(() => ({ userId: "valid_user_id" }));
     checkAuth(req, res, next);
 
@@ -78,78 +71,91 @@ describe("checkAuth()", () => {
     expect(res.json).toHaveBeenCalledWith({ error: new Error(process.env.AUTH_REQ) });
     expect(next).not.toHaveBeenCalled();
   });
+
+  test("should throw an error when an invalid token is provided", () => {
+    const req = { headers: { authorization: "Bearer invalidToken" } };
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+
+    jwt.verify = jest.fn().mockImplementationOnce(() => { throw new Error() });
+    checkAuth(req, res, next);
+
+    expect(res.status).toHaveBeenCalledWith(401);
+    expect(res.json).toHaveBeenCalledWith({
+      error: new Error(process.env.AUTH_REQ),
+    });
+  });
 });
 
 /**
  * ? CHECK EMAIL
  */
-describe('checkEmail()', () => {
+describe("checkEmail()", () => {
 
-  test('returns true when given a valid email', () => {
-    assert.strictEqual(checkEmail('hello@example.com'), true);
+  test("returns true when given a valid email", () => {
+    expect(checkEmail("hello@example.com")).toStrictEqual(true);
   });
 
-  test('returns false when given an invalid email format', () => {
-    assert.strictEqual(checkEmail('notanemail'), false);
+  test("returns false when given an invalid email format", () => {
+    expect(checkEmail("notanemail")).toStrictEqual(false);
   });
 
-  test('returns false when given an empty string', () => {
-    assert.strictEqual(checkEmail(''), false);
+  test("returns false when given an empty string", () => {
+    expect(checkEmail("")).toStrictEqual(false);
   });
 });
 
 /**
  * ? CHECK PASS
  */
-describe('checkPass()', () => {
+describe("checkPass()", () => {
 
-  test('returns true for a valid password', () => {
-    const validPass = 'Abcdef1!';
+  test("returns true for a valid password", () => {
+    const validPass = "Abcdef1!";
     const isValid = checkPass(validPass);
 
-    assert.strictEqual(isValid, true);
+    expect(isValid).toStrictEqual(true);
   });
 
-  test('returns false for a password that is too short', () => {
-    const invalidPass = 'Abc1!';
+  test("returns false for a password that is too short", () => {
+    const invalidPass = "Abc1!";
     const isValid = checkPass(invalidPass);
 
-    assert.strictEqual(isValid, false);
+    expect(isValid).toStrictEqual(false);
   });
 
-  test('returns false for a password that is too long', () => {
-    const invalidPass = 'Abcdef1!'.repeat(100);
+  test("returns false for a password that is too long", () => {
+    const invalidPass = "Abcdef1!".repeat(100);
     const isValid = checkPass(invalidPass);
 
-    assert.strictEqual(isValid, false);
+    expect(isValid).toStrictEqual(false);
   });
 
-  test('returns false for a password without an uppercase letter', () => {
-    const invalidPass = 'abcdef1!';
+  test("returns false for a password without an uppercase letter", () => {
+    const invalidPass = "abcdef1!";
     const isValid = checkPass(invalidPass);
 
-    assert.strictEqual(isValid, false);
+    expect(isValid).toStrictEqual(false);
   });
 
-  test('returns false for a password without a lowercase letter', () => {
-    const invalidPass = 'ABCDEF1!';
+  test("returns false for a password without a lowercase letter", () => {
+    const invalidPass = "ABCDEF1!";
     const isValid = checkPass(invalidPass);
 
-    assert.strictEqual(isValid, false);
+    expect(isValid).toStrictEqual(false);
   });
 
-  test('returns false for a password without a digit', () => {
-    const invalidPass = 'Abcdefgh!';
+  test("returns false for a password without a digit", () => {
+    const invalidPass = "Abcdefgh!";
     const isValid = checkPass(invalidPass);
 
-    assert.strictEqual(isValid, false);
+    expect(isValid).toStrictEqual(false);
   });
 
-  test('returns false for a password with spaces', () => {
-    const invalidPass = 'Abcdef1! ';
+  test("returns false for a password with spaces", () => {
+    const invalidPass = "Abcdef1! ";
     const isValid = checkPass(invalidPass);
 
-    assert.strictEqual(isValid, false);
+    expect(isValid).toStrictEqual(false);
   });
 });
 
