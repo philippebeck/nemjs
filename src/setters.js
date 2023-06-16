@@ -42,7 +42,7 @@ exports.setAuth = async (pass, user, res) => {
  * @returns {Promise<void>} A Promise that resolves when the image is saved in the new format
  */
 exports.setImage = async (input, output) => {
-  const sharp = require('sharp');
+  const sharp = require("sharp");
 
   await sharp(process.env.IMG_URL + input)
     .toFormat(process.env.IMG_EXT)
@@ -64,7 +64,7 @@ exports.setThumbnail = (
   width = process.env.THUMB_WIDTH, 
   height = process.env.THUMB_HEIGHT
   ) => {
-  const sharp = require('sharp');
+  const sharp = require("sharp");
 
   sharp(`${process.env.IMG_URL}${input}`)
     .resize(parseInt(width, 10), parseInt(height, 10), { 

@@ -2,8 +2,8 @@
 
 /**
  * ? GET ARRAY FROM STRING
- * * Splits a string using comma as a delimiter and returns the resulting
- * * array. If the first element of the array is an empty string, it is removed
+ * * Splits a string using comma as a delimiter & returns the resulting array
+ * * If the first element of the array is an empty string, it is removed
  *
  * @param {string} string - The input string to split
  * @return {Array} - An array of string elements split from the input string
@@ -18,9 +18,9 @@ exports.getArrayFromString = (string) => {
 
 /**
  * ? GET ARRAY WITH USERNAME
- * * Maps `array`'s user IDs to their respective usernames from `users` 
- * * and appends the username to the `user` field of each item in `array` 
- * * that has a matching user ID. Returns a new array with the updated `user` fields
+ * * Maps `array`'s user IDs to their respective usernames from `users` & 
+ * * appends the username to the `user` field of each item in `array` that has a matching user ID
+ * * Returns a new array with the updated `user` fields
  *
  * @param {Array} array - The array of items to update
  * @param {Array} users - The array of users to use as a reference for updating `array`
@@ -119,7 +119,7 @@ exports.getMessage = (data) => {
 
 /**
  * ? GET PASSWORD
- * * Generates a password using the 'generate-password' package 
+ * * Generates a password using the "generate-password" package 
  *
  * @return {string} The generated password
  */
