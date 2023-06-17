@@ -1,4 +1,4 @@
-/*! nemjs v1.6.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v1.6.1 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -17,7 +17,7 @@ require("dotenv").config();
 exports.checkAuth = (req, res, next) => {
   const jwt   = require("jsonwebtoken");
   const token = req.headers.authorization.split(" ")[1];
-
+  
   try {
     const tokenData = jwt.verify(token, process.env.JWT);
     const userId    = tokenData.userId;
@@ -71,7 +71,6 @@ exports.checkPass = (pass) => {
   return false;
 }
 
-
 /**
  * ? CHECK RANGE
  * * Checks if the input value is within the range specified by min and max
@@ -117,7 +116,7 @@ exports.checkUrl = (url) => {
  * @return {Array} - An array of string elements split from the input string
  */
 exports.getArrayFromString = (string) => {
-  let array = string.split(",");
+  const array = string.split(",");
 
   if (array[0] === "") array.shift();
 
@@ -126,7 +125,7 @@ exports.getArrayFromString = (string) => {
 
 /**
  * ? GET ARRAY WITH USERNAME
- * * Maps `array`'s user IDs to their respective usernames from `users` & 
+ * * Maps array's user IDs to their respective usernames from `users` & 
  * * appends the username to the `user` field of each item in `array` that has a matching user ID
  * * Returns a new array with the updated `user` fields
  *
