@@ -48,7 +48,10 @@ describe("checkAuth()", () => {
       json: jest.fn()
     };
 
-    jwt.verify = jest.fn(() => { throw new Error() });
+    jwt.verify = jest.fn(() => { 
+      throw new Error() 
+    });
+
     checkAuth(req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(401);
@@ -81,7 +84,10 @@ describe("checkAuth()", () => {
       json: jest.fn() 
     };
 
-    jwt.verify = jest.fn().mockImplementationOnce(() => { throw new Error() });
+    jwt.verify = jest.fn().mockImplementationOnce(() => { 
+      throw new Error() 
+    });
+
     checkAuth(req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(401);
@@ -89,7 +95,7 @@ describe("checkAuth()", () => {
     expect(next).not.toHaveBeenCalled();
   });
 
-  test('should call next() if the userId matches', () => {
+  test("should call next() if the userId matches", () => {
     const token = jwt.sign(
       { userId: "1" },
       process.env.JWT,

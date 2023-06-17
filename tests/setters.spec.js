@@ -105,7 +105,9 @@ describe("setAuth()", () => {
     };
 
     const originalBcryptCompare = bcrypt.compare;
-    bcrypt.compare = () => { throw new Error("an error occurred") };
+    bcrypt.compare = () => { 
+      throw new Error("an error occurred") 
+    };
 
     await setAuth(pass, user, res);
     bcrypt.compare = originalBcryptCompare;
