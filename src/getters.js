@@ -9,7 +9,7 @@
  * @return {Array} - An array of string elements split from the input string
  */
 exports.getArrayFromString = (string) => {
-  let array = string.split(",");
+  const array = string.split(",");
 
   if (array[0] === "") array.shift();
 
@@ -18,7 +18,7 @@ exports.getArrayFromString = (string) => {
 
 /**
  * ? GET ARRAY WITH USERNAME
- * * Maps `array`'s user IDs to their respective usernames from `users` & 
+ * * Maps array's user IDs to their respective usernames from `users` & 
  * * appends the username to the `user` field of each item in `array` that has a matching user ID
  * * Returns a new array with the updated `user` fields
  *
