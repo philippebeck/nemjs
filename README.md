@@ -30,6 +30,7 @@ Image services are using sharp
   - [Download](#download)
   - [Content](#content)
   - [Usage](#usage)
+  - [Tests](#tests)
 
 ---
 
@@ -52,15 +53,14 @@ or
 
 ## Content
 
-Checker part :  
+Checkers part :  
 -   **checkAuth(req, res, next)** : check JWT auth to routes  
 -   **checkEmail(email)** : check email validity  
--   **checkNumber(number, min, max)** : check number min/max  
 -   **checkPass(pass)** : check password validity  
--   **checkString(string, min, max)** : check string min/max  
+-   **checkRange(value, min, max)** : check|number min/max  
 -   **checkUrl(url)** : check url validity  
 
-Getter part :  
+Getters part :  
 -   **getArrayFromString(string)** : get array from string  
 -   **getArrayWithUsername(array, users)** : get array with username  
 -   **getName(name)** : get kebab-case name  
@@ -70,7 +70,7 @@ Getter part :
 -   **getMessage(message)** : get message  
 -   **getPassword()** : get generated password  
 
-Setter part :  
+Setters part :  
 -   **setAuth(pass, user, res)** : set JWT  
 -   **setImage(inputImg, outputImg, width, height)** : set image  
 -   **setThumbnail(inputImg, outputImg, width, height)** : set thumbnail  
@@ -85,12 +85,18 @@ Setter part :
     -  `router.get("/", nem.checkAuth, UserCtrl.list)`  
     -  `nem.setAuth(guest.password, user, res)`  
     -  `if (nem.checkEmail(guest.email)) { ... }`  
-    -  `if (nem.checkString(guest.name)) { ... }`  
+    -  `if (nem.checkRange(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
     -  `let pass = nem.getPassword();`  
-    -  `if (nem.checkNumber(item.price, 1, 500)) { ... }`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.setImage(uploadImage, newImage);`  
     -  `nem.setThumbnail(uploadImage, newImage);`  
     -  `const mailer = nem.getMailer()`  
     -  `let message = nem.getMessage(req)`  
+
+---
+
+## Tests
+
+You can run unit tests with Jest :
+npm test -- --coverage
