@@ -20,6 +20,8 @@ beforeEach(() => {
     ...originalEnv,
     AUTH_ID: "Invalid Id !",
     AUTH_REQ: "Invalid Request !",
+    JWT: "your-json-web-token",
+    JWT_DURATION: "72h",
     MAX: 50,
     MIN: 2,
     MSG: "Value out of range !",
@@ -74,17 +76,42 @@ describe("checkAuth()", () => {
 
   test("should throw an error when an invalid token is provided", () => {
     const req = { headers: { authorization: "Bearer invalidToken" } };
-    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
+    const res = { 
+      status: jest.fn().mockReturnThis(), 
+      json: jest.fn() 
+    };
 
     jwt.verify = jest.fn().mockImplementationOnce(() => { throw new Error() });
     checkAuth(req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(401);
-    expect(res.json).toHaveBeenCalledWith({
-      error: new Error(process.env.AUTH_REQ),
-    });
+    expect(res.json).toHaveBeenCalledWith({ error: new Error(process.env.AUTH_REQ) });
+    expect(next).not.toHaveBeenCalled();
+  });
+
+  test('should call next() if the userId matches', () => {
+    const token = jwt.sign(
+      { userId: "1" },
+      process.env.JWT,
+      { expiresIn: process.env.JWT_DURATION }
+    );
+
+    const req = {
+      headers: { authorization: `Bearer ${token}` },
+      body: { userId: "1" }
+    };
+
+    const res = {
+      status: jest.fn().mockReturnThis(),
+      json: jest.fn()
+    };
+
+    const next = () => {};
+
+    expect(checkAuth(req, res, next)).toStrictEqual(undefined);
   });
 });
+
 
 /**
  * ? CHECK EMAIL
@@ -196,6 +223,20 @@ describe("checkRange()", () => {
 
     checkRange("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", msg, min, max);
     expect(alert).toHaveBeenCalledWith(`${msg} ${min} & ${max}`);
+  });
+
+  test("should display the default message if msg is not provided", () => {
+    checkRange(1);
+    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
+
+    checkRange(51);
+    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
+
+    checkRange("");
+    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
+
+    checkRange("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
   });
 });
 
