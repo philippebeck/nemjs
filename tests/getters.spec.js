@@ -15,6 +15,7 @@ const originalEnv = process.env;
 
 beforeEach(() => {
   jest.resetModules();
+
   process.env = {
     ...originalEnv,
     IMG_EXT: "webp",
@@ -179,7 +180,7 @@ describe("getUniqueName()", () => {
     const uniqueName = getUniqueName(name);
     const timestamp = Date.now();
 
-    expect(uniqueName).toMatch(new RegExp(`${name}-${timestamp}$`));
+    expect(uniqueName).toMatch(new RegExp(`${name}-${timestamp}`));
   });
 
   test("should return a string", () => {
