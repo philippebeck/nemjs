@@ -1,7 +1,6 @@
 //! ******************** SETTERS ********************
 
 const bcrypt  = require("bcrypt");
-const fs      = require("fs");
 const jwt     = require("jsonwebtoken");
 const path    = require("path");
 const process = require("process");
@@ -18,10 +17,11 @@ const originalEnv = process.env;
 
 beforeEach(() => {
   jest.resetModules();
+
   process.env = {
     ...originalEnv,
     IMG_EXT: "webp",
-    IMG_URL: "https://piscium.photos/",
+    IMG_URL: "../img/",
     JWT: "your-json-web-token",
     JWT_DURATION: "72h",
     LOGIN_EMAIL: "User not found !",
@@ -132,7 +132,8 @@ describe("setThumbnail()", () => {
 
   beforeEach(() => {
     sandbox = sinon.createSandbox();
-    sandbox.stub(process.env, "IMG_URL").value("");
+
+    sandbox.stub(process.env, "IMG_URL").value("img/");
     sandbox.stub(process.env, "THUMB_WIDTH").value(200);
     sandbox.stub(process.env, "THUMB_HEIGHT").value(200);
     sandbox.stub(process.env, "THUMB_FIT").value("cover");
@@ -144,9 +145,9 @@ describe("setThumbnail()", () => {
     sandbox.restore();
   });
 
-  test("should default to the process environment variables for the width and height if none are provided", async () => {
+  test("should default to the process environment variables for the width & height if none are provided", async () => {
     const input = "test.jpg";
-    const output = "test_thumb.jpg";
+    const output = "img/test_thumb.jpg";
     const resizeSpy = sandbox.spy(sharp.prototype, "resize");
     const toFormatSpy = sandbox.spy(sharp.prototype, "toFormat");
     const toFileSpy = sandbox.spy(sharp.prototype, "toFile");
