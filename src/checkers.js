@@ -65,7 +65,6 @@ exports.checkPass = (pass) => {
   return false;
 }
 
-
 /**
  * ? CHECK RANGE
  * * Checks if the input value is within the range specified by min and max
