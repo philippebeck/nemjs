@@ -30,7 +30,7 @@ exports.checkAuth = (req, res, next) => {
  * * Validates if the email is in a correct format using email-validator package
  *
  * @param {string} email - The email to be validated
- * @return {boolean} true if email is valid, false otherwise
+ * @return {boolean} Returns true if email is valid, false otherwise
  */
 exports.checkEmail = (email) => {
   const emailValidator = require("email-validator");
@@ -44,7 +44,7 @@ exports.checkEmail = (email) => {
  * * The password must conform to the rules set in the password-validator schema
  *
  * @param {string} pass - The password to validate
- * @return {boolean} True if the password is valid, false otherwise
+ * @return {boolean} Returns true if password is valid, false otherwise
  */
 exports.checkPass = (pass) => {
   const passValidator = require("password-validator");
@@ -63,12 +63,12 @@ exports.checkPass = (pass) => {
 
 /**
  * ? CHECK RANGE
- * * Checks if the input value is within the range specified by min and max
+ * * Checks if the input value is within the range specified by min & max
  *
  * @param {number|string} value - The input value to check
  * @param {number} [min=process.env.MIN] - The minimum value of the range
  * @param {number} [max=process.env.MAX] - The maximum value of the range
- * @return {boolean} Returns true if the input value is within the range, otherwise false
+ * @return {boolean} Returns true if value is within the range, false otherwise
  */
 exports.checkRange = (value, min = process.env.MIN, max = process.env.MAX) => {
   const IS_NUMBER_OK = (typeof value === "number" && value >= min && value <= max);
@@ -82,7 +82,7 @@ exports.checkRange = (value, min = process.env.MIN, max = process.env.MAX) => {
  * * Checks if the given URL is a valid URL
  *
  * @param {string} url - The URL to check
- * @return {boolean} Returns true if the given URL is a valid URL, otherwise false
+ * @return {boolean} Returns true if URL is valid, false otherwise
  */
 exports.checkUrl = (url) => {
   const validUrl = require("valid-url");
