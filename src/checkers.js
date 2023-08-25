@@ -70,18 +70,15 @@ exports.checkPass = (pass) => {
  * * Checks if the input value is within the range specified by min and max
  *
  * @param {number|string} value - The input value to check
- * @param {string} [message=process.env.MSG] - The message to display if the input value is not in range
  * @param {number} [min=process.env.MIN] - The minimum value of the range
  * @param {number} [max=process.env.MAX] - The maximum value of the range
  * @return {boolean} Returns true if the input value is within the range, otherwise false
  */
-exports.checkRange = (value, message = process.env.MSG, min = process.env.MIN, max = process.env.MAX) => {
-  const inRange = (typeof value === "number" && value >= min && value <= max) ||
-                  (typeof value === "string" && value.length >= min && value.length <= max);
+exports.checkRange = (value, min = process.env.MIN, max = process.env.MAX) => {
+  const IS_NUMBER_OK = (typeof value === "number" && value >= min && value <= max);
+  const IS_STRING_OK = (typeof value === "string" && value.length >= min && value.length <= max);
 
-  if (!inRange) alert(`${message} ${min} & ${max}`);
-
-  return inRange;
+  return IS_NUMBER_OK || IS_STRING_OK;
 }
 
 /**
