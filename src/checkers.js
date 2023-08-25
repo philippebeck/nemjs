@@ -33,11 +33,9 @@ exports.checkAuth = (req, res, next) => {
  * @return {boolean} true if email is valid, false otherwise
  */
 exports.checkEmail = (email) => {
-  const emailValidator = require("email-validator"); 
+  const emailValidator = require("email-validator");
 
-  if (emailValidator.validate(email)) return true;
-
-  return false;
+  return emailValidator.validate(email);
 }
 
 /**
@@ -60,9 +58,7 @@ exports.checkPass = (pass) => {
     .has().digits(process.env.PASS_INT)
     .has().not().spaces();
 
-  if (schema.validate(pass)) return true;
-
-  return false;
+  return schema.validate(pass);
 }
 
 /**
