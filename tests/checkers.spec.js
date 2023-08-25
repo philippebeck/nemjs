@@ -24,7 +24,6 @@ beforeEach(() => {
     JWT_DURATION: "72h",
     MAX: 50,
     MIN: 2,
-    MSG: "Value out of range !",
     PASS_INT: 1,
     PASS_MAX: 50,
     PASS_MIN: 8,
@@ -196,53 +195,20 @@ describe("checkPass()", () => {
  * ? CHECK RANGE
  */
 describe("checkRange()", () => {
-  const msg = "Value out of range";
-
   test("should return true if value is within the specified range", () => {
 
-    expect(checkRange(3, msg)).toBe(true);
-    expect(checkRange(50, msg)).toBe(true);
-    expect(checkRange("aA", msg)).toBe(true);
-    expect(checkRange("abcdefghijklmnopqrstuvwxyz", msg)).toBe(true);
+    expect(checkRange(3)).toBe(true);
+    expect(checkRange(50)).toBe(true);
+    expect(checkRange("aA")).toBe(true);
+    expect(checkRange("abcdefghijklmnopqrstuvwxyz")).toBe(true);
   });
 
   test("should return false if value is not within the specified range", () => {
 
-    expect(checkRange(1, msg)).toBe(false);
-    expect(checkRange(51, msg)).toBe(false);
-    expect(checkRange("", msg)).toBe(false);
-    expect(checkRange("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", msg)).toBe(false);
-  });
-
-  test("should display the correct message if value is not within the specified range", () => {
-    const min = 2;
-    const max = 50;
-
-    checkRange(1, msg, min, max);
-    expect(alert).toHaveBeenCalledWith(`${msg} ${min} & ${max}`);
-
-    checkRange(51, msg, min, max);
-    expect(alert).toHaveBeenCalledWith(`${msg} ${min} & ${max}`);
-
-    checkRange("", msg, min, max);
-    expect(alert).toHaveBeenCalledWith(`${msg} ${min} & ${max}`);
-
-    checkRange("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", msg, min, max);
-    expect(alert).toHaveBeenCalledWith(`${msg} ${min} & ${max}`);
-  });
-
-  test("should display the default message if msg is not provided", () => {
-    checkRange(1);
-    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
-
-    checkRange(51);
-    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
-
-    checkRange("");
-    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
-
-    checkRange("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
-    expect(alert).toHaveBeenCalledWith(`${process.env.MSG} ${process.env.MIN} & ${process.env.MAX}`);
+    expect(checkRange(1)).toBe(false);
+    expect(checkRange(51)).toBe(false);
+    expect(checkRange("")).toBe(false);
+    expect(checkRange("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")).toBe(false);
   });
 });
 
