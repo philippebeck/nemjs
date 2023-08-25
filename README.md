@@ -57,7 +57,7 @@ Checkers part :
 -   **checkAuth(req, res, next)** : check JWT auth to routes  
 -   **checkEmail(email)** : check email validity  
 -   **checkPass(pass)** : check password validity  
--   **checkRange(value, min, max)** : check|number min/max  
+-   **checkRange(value, min, max)** : check number|string range with min/max  
 -   **checkUrl(url)** : check url validity  
 
 Getters part :  
