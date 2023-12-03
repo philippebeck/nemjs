@@ -62,7 +62,6 @@ Checkers part :
 
 Getters part :  
 -   **getArrayFromString(string)** : get array from string  
--   **getArrayWithUsername(array, users)** : get array with username  
 -   **getName(name)** : get kebab-case name  
 -   **getPosterName(name)** : get image name for gallery cover  
 -   **getUniqueName(name)** : get unique name with timestamp  
