@@ -73,9 +73,9 @@ describe("getArrayWithUsername()", () => {
   ];
 
   const users = [
-    { _id: "1", name: "Alice" },
-    { _id: "2", name: "Bob" },
-    { _id: "3", name: "Charlie" },
+    { id: "1", name: "Alice" },
+    { id: "2", name: "Bob" },
+    { id: "3", name: "Charlie" },
   ];
 
   const outputArray = getArrayWithUsername(inputArray, users);

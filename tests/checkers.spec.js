@@ -61,14 +61,14 @@ describe("checkAuth()", () => {
   test("should return 401 if the userId in the request body is different from the one in the token", () => {
     const req = {
       headers: { authorization: "Bearer valid_token" },
-      body: { userId: "invalid_user_id" }
+      body: { userId: "invalid_userid" }
     };
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn()
     };
 
-    jwt.verify = jest.fn(() => ({ userId: "valid_user_id" }));
+    jwt.verify = jest.fn(() => ({ userId: "valid_userid" }));
     checkAuth(req, res, next);
 
     expect(res.status).toHaveBeenCalledWith(401);

@@ -5,9 +5,9 @@
  * * Sets authentication for a user with provided credentials
  *
  * @param {string} pass - The password of the user
- * @param {object} user - The user object to authenticate
- * @param {object} res - The response object to send the result
- * @return {object} The result of the authentication process
+ * @param {Object} user - The user object to authenticate
+ * @param {Object} res - The response object to send the result
+ * @return {Object} The result of the authentication process
  */
 exports.setAuth = async (pass, user, res) => {
   const bcrypt = require("bcrypt");
@@ -21,12 +21,12 @@ exports.setAuth = async (pass, user, res) => {
     if (!valid) return res.status(401).json({ error: process.env.LOGIN_PASS });
 
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user.id },
       process.env.JWT,
       { expiresIn: process.env.JWT_DURATION }
     );
 
-    return res.status(200).json({ userId: user._id, token });
+    return res.status(200).json({ userId: user.id, token });
 
   } catch (error) {
     return res.status(400).json({ error });
