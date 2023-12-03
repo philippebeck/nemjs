@@ -1,4 +1,4 @@
-/*! nemjs v1.6.2 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v2.0.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
