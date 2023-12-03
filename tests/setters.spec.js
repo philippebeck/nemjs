@@ -74,10 +74,10 @@ describe("setAuth()", () => {
 
   test("should return 200 with token & user id if authentication is successful", async () => {
     const pass = "password";
-    const user = { _id: "123", pass: await bcrypt.hash("password", 10) };
+    const user = { id: "123", pass: await bcrypt.hash("password", 10) };
 
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user.id },
       process.env.JWT,
       { expiresIn: process.env.JWT_DURATION }
     );
@@ -85,7 +85,7 @@ describe("setAuth()", () => {
     const res = {
       status: (code) => ({ json: (response) => {
           expect(code).toStrictEqual(200);
-          expect(response).toStrictEqual({ userId: user._id, token });
+          expect(response).toStrictEqual({ userId: user.id, token });
         }
       })
     };
@@ -95,7 +95,7 @@ describe("setAuth()", () => {
 
   test("should return 400 if an error occurs", async () => {
     const pass = "password";
-    const user = { _id: "123", pass: await bcrypt.hash("password", 10) };
+    const user = { id: "123", pass: await bcrypt.hash("password", 10) };
 
     const res = {
       status: (code) => ({ json: (response) => {

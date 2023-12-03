@@ -127,7 +127,7 @@ exports.getArrayFromString = (string) => {
  * @return {Array} A new array with the updated `user` fields
  */
 exports.getArrayWithUsername = (array, users) => {
-  const userMap = new Map(users.map(user => [user._id.toString(), user.name]));
+  const userMap = new Map(users.map(user => [user.id.toString(), user.name]));
 
   return array.map(item => {
     const username = userMap.get(item.user);
@@ -241,9 +241,9 @@ exports.getPassword = () => {
  * * Sets authentication for a user with provided credentials
  *
  * @param {string} pass - The password of the user
- * @param {object} user - The user object to authenticate
- * @param {object} res - The response object to send the result
- * @return {object} The result of the authentication process
+ * @param {Object} user - The user object to authenticate
+ * @param {Object} res - The response object to send the result
+ * @return {Object} The result of the authentication process
  */
 exports.setAuth = async (pass, user, res) => {
   const bcrypt = require("bcrypt");
@@ -257,12 +257,12 @@ exports.setAuth = async (pass, user, res) => {
     if (!valid) return res.status(401).json({ error: process.env.LOGIN_PASS });
 
     const token = jwt.sign(
-      { userId: user._id },
+      { userId: user.id },
       process.env.JWT,
       { expiresIn: process.env.JWT_DURATION }
     );
 
-    return res.status(200).json({ userId: user._id, token });
+    return res.status(200).json({ userId: user.id, token });
 
   } catch (error) {
     return res.status(400).json({ error });
@@ -311,4 +311,4 @@ exports.setThumbnail = (
     .toFile(output);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 25th Aug 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 3rd Dec 2023 */

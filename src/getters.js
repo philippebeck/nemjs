@@ -27,7 +27,7 @@ exports.getArrayFromString = (string) => {
  * @return {Array} A new array with the updated `user` fields
  */
 exports.getArrayWithUsername = (array, users) => {
-  const userMap = new Map(users.map(user => [user._id.toString(), user.name]));
+  const userMap = new Map(users.map(user => [user.id.toString(), user.name]));
 
   return array.map(item => {
     const username = userMap.get(item.user);
