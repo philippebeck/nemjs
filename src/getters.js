@@ -17,28 +17,6 @@ exports.getArrayFromString = (string) => {
 }
 
 /**
- * ? GET ARRAY WITH USERNAME
- * * Maps array's user IDs to their respective usernames from `users` & 
- * * appends the username to the `user` field of each item in `array` that has a matching user ID
- * * Returns a new array with the updated `user` fields
- *
- * @param {Array} array - The array of items to update
- * @param {Array} users - The array of users to use as a reference for updating `array`
- * @return {Array} A new array with the updated `user` fields
- */
-exports.getArrayWithUsername = (array, users) => {
-  const userMap = new Map(users.map(user => [user.id.toString(), user.name]));
-
-  return array.map(item => {
-    const username = userMap.get(item.user);
-
-    if (username) item.user = `${username}-${item.user}`;
-
-    return item;
-  });
-}
-
-/**
  * ? GET NAME
  * * Returns a modified string with accents removed,
  * * spaces replaced with hyphens & all characters in lowercase
