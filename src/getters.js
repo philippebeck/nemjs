@@ -1,26 +1,9 @@
 //! ******************** GETTERS ********************
 
 /**
- * ? GET ARRAY FROM STRING
- * * Splits a string using comma as a delimiter & returns the resulting array
- * * If the first element of the array is an empty string, it is removed
- *
- * @param {string} string - The input string to split
- * @return {Array} - An array of string elements split from the input string
- */
-exports.getArrayFromString = (string) => {
-  const array = string.split(",");
-
-  if (array[0] === "") array.shift();
-
-  return array;
-}
-
-/**
  * ? GET NAME
  * * Returns a modified string with accents removed,
  * * spaces replaced with hyphens & all characters in lowercase
- *
  * @param {string} name - the original string
  * @return {string} the modified string 
  */
@@ -33,63 +16,46 @@ exports.getName = (name) => {
 /**
  * ? GET POSTER NAME
  * * Returns a string with the name of a poster image
- *
  * @param {string} name - the name of the poster
  * @return {string} a string with the name of the poster image
  */
 exports.getPosterName = (name) => {
+  const { IMG_EXT } = process.env;
 
-  return this.getName(name) + "-01." + process.env.IMG_EXT;
-}
-
-/**
- * ? GET UNIQUE NAME
- * * Returns a unique name by appending the current timestamp to the given name
- *
- * @param {string} name - The name to be made unique
- * @return {string} A unique name generated
- */
-exports.getUniqueName = (name) => {
-
-  return this.getName(name) + "-" + Date.now();
+  return this.getName(name) + "-01." + IMG_EXT;
 }
 
 /**
  * ? GET MAILER
  * * Returns a nodemailer transport object created with the specified host,
  * * port, secure, auth user & auth pass as environment variables
- *
  * @return {Object} nodemailer transport object
  */
 exports.getMailer = () => {
+  const { MAIL_HOST, MAIL_PASS, MAIL_PORT, MAIL_SECURE, MAIL_USER } = process.env;
   const nodemailer = require("nodemailer");
 
-  const transport = {
-    host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
-    secure: process.env.MAIL_SECURE,
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS
-    }
-  };
-
-  return nodemailer.createTransport(transport);
+  return nodemailer.createTransport({
+    host: MAIL_HOST,
+    port: MAIL_PORT,
+    secure: MAIL_SECURE,
+    auth: { user: MAIL_USER, pass: MAIL_PASS }
+  });
 }
 
 /**
  * ? GET MESSAGE
  * * Returns an object containing email message details
- *
  * @param {Object} data - An object containing email details
  * @return {Object} An object containing from, to, bcc, subject & html properties
  */
 exports.getMessage = (data) => {
+  const { MAIL_USER } = process.env;
 
   return { 
-    from: process.env.MAIL_USER, 
+    from: MAIL_USER, 
     to: data.email, 
-    bcc: process.env.MAIL_USER,
+    bcc: MAIL_USER,
     subject: data.subject, 
     html: data.html
   };
@@ -98,16 +64,16 @@ exports.getMessage = (data) => {
 /**
  * ? GET PASSWORD
  * * Generates a password using the "generate-password" package 
- *
  * @return {string} The generated password
  */
 exports.getPassword = () => {
+  const { GENERATE_LENGTH, GENERATE_NUMBERS, GENERATE_SYMBOLS, GENERATE_STRICT } = process.env;
   const generator = require("generate-password");
 
   return generator.generate({
-    length: process.env.GENERATE_LENGTH,
-    numbers: process.env.GENERATE_NUMBERS,
-    symbols: process.env.GENERATE_SYMBOLS,
-    strict: process.env.GENERATE_STRICT
+    length: GENERATE_LENGTH,
+    numbers: GENERATE_NUMBERS,
+    symbols: GENERATE_SYMBOLS,
+    strict: GENERATE_STRICT
   });
 }
