@@ -61,10 +61,8 @@ Checkers part :
 -   **checkUrl(url)** : check url validity  
 
 Getters part :  
--   **getArrayFromString(string)** : get array from string  
 -   **getName(name)** : get kebab-case name  
 -   **getPosterName(name)** : get image name for gallery cover  
--   **getUniqueName(name)** : get unique name with timestamp  
 -   **getMailer()** : get mailer with nodemailer  
 -   **getMessage(message)** : get message  
 -   **getPassword()** : get generated password  
@@ -86,7 +84,7 @@ Setters part :
     -  `if (nem.checkEmail(guest.email)) { ... }`  
     -  `if (nem.checkRange(guest.name)) { ... }`  
     -  `if (nem.checkPass(guest.password)) { ... }`  
-    -  `let pass = nem.getPassword();`  
+    -  `const pass = nem.getPassword();`  
     -  `if (nem.checkUrl(item.url)) { ... }`  
     -  `nem.setImage(uploadImage, newImage);`  
     -  `nem.setThumbnail(uploadImage, newImage);`  
