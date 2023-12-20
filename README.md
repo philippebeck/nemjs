@@ -72,7 +72,7 @@ Setters part :
 -   **setImage(inputImg, outputImg, width, height)** : set image  
 -   **setThumbnail(inputImg, outputImg, width, height)** : set thumbnail  
 
----will
+---
 
 ## Usage
 
