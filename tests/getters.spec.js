@@ -1,11 +1,8 @@
 //! ******************** GETTERS ********************
 
 const { 
-  getArrayFromString, 
-  getArrayWithUsername, 
   getName, 
   getPosterName, 
-  getUniqueName, 
   getMailer, 
   getMessage, 
   getPassword 
@@ -33,78 +30,6 @@ beforeEach(() => {
 
 afterEach(() => {
   process.env = originalEnv;
-});
-
-/**
- * ? GET ARRAY FROM STRING
- */
-describe("getArrayFromString()", () => {
-
-  test("should split a string using comma as a delimiter", () => {
-    const input = "a,b,c";
-    const expected = ["a", "b", "c"];
-
-    expect(getArrayFromString(input)).toStrictEqual(expected);
-  });
-
-  test("should remove the first element if it is an empty string", () => {
-    const input = ",a,b,c";
-    const expected = ["a", "b", "c"];
-
-    expect(getArrayFromString(input)).toStrictEqual(expected);
-  });
-
-  test("should return an empty array if an empty string is passed", () => {
-    const input = "";
-    const expected = [];
-
-    expect(getArrayFromString(input)).toStrictEqual(expected);
-  });
-});
-
-/**
- * ? GET ARRAY WITH USERNAME
- */
-describe("getArrayWithUsername()", () => {
-  const inputArray = [
-    { user: "1", text: "Hello" },
-    { user: "2", text: "World" },
-    { user: "4", text: "Goodbye" },
-  ];
-
-  const users = [
-    { id: "1", name: "Alice" },
-    { id: "2", name: "Bob" },
-    { id: "3", name: "Charlie" },
-  ];
-
-  const outputArray = getArrayWithUsername(inputArray, users);
-
-  test("returns an empty array when given an empty array", () => {
-    expect(getArrayWithUsername([], users)).toStrictEqual([]);
-  });
-
-  test("returns the original array when given an empty users array", () => {
-    expect(getArrayWithUsername(inputArray, [])).toStrictEqual(inputArray);
-  });
-
-  test("returns a new array with updated user fields", () => {
-    expect(outputArray).not.toBe(inputArray);
-    expect(outputArray).toStrictEqual([
-      { user: "Alice-1", text: "Hello" },
-      { user: "Bob-2", text: "World" },
-      { user: "4", text: "Goodbye" },
-    ]);
-  });
-
-  test("appends the username to the user field for matching user IDs", () => {
-    expect(outputArray[0].user).toStrictEqual("Alice-1");
-    expect(outputArray[1].user).toStrictEqual("Bob-2");
-  });
-
-  test("does not append the username to the user field for non-matching user IDs", () => {
-    expect(outputArray[2].user).toStrictEqual("4");
-  });
 });
 
 /**
@@ -167,26 +92,6 @@ describe("getPosterName()", () => {
     const name = "poster";
 
     expect(getPosterName(name)).toBe(`${name}-01.${process.env.IMG_EXT}`);
-  });
-});
-
-/**
- * ? GET UNIQUE NAME
- */
-describe("getUniqueName()", () => {
-
-  test("should append timestamp to the given name", () => {
-    const name = "test";
-    const uniqueName = getUniqueName(name);
-    const timestamp = Date.now();
-
-    expect(uniqueName).toMatch(new RegExp(`${name}-${timestamp}`));
-  });
-
-  test("should return a string", () => {
-    const uniqueName = getUniqueName("test");
-
-    expect(typeof uniqueName).toStrictEqual("string");
   });
 });
 

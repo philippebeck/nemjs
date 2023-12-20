@@ -1,6 +1,6 @@
 {
   "name": "nemjs",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "JavaScript Backend Services Library",
   "keywords": [
     "javascript",
@@ -21,7 +21,7 @@
   "bugs": "https://github.com/philippebeck/nemjs/issues",
   "homepage": "https://www.npmjs.com/package/nemjs",
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

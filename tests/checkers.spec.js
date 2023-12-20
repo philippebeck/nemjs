@@ -117,7 +117,6 @@ describe("checkAuth()", () => {
   });
 });
 
-
 /**
  * ? CHECK EMAIL
  */

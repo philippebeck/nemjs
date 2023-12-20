@@ -21,7 +21,7 @@ beforeEach(() => {
   process.env = {
     ...originalEnv,
     IMG_EXT: "webp",
-    IMG_URL: "../img/",
+    IMG_URL: "img/",
     JWT: "your-json-web-token",
     JWT_DURATION: "72h",
     LOGIN_EMAIL: "User not found !",
@@ -30,6 +30,7 @@ beforeEach(() => {
     THUMB_FIT: "cover",
     THUMB_HEIGHT: 200,
     THUMB_POSITION: "center",
+    THUMB_URL: "img/",
     THUMB_WIDTH: 200,
   };
 });
@@ -120,7 +121,7 @@ describe("setAuth()", () => {
  */
 describe("setImage()", () => {
   test("should throw an error if input file does not exist", async () => {
-    const inputPath = "nonexistent.jpg";
+    const inputPath = path.join(__dirname, "nofile.webp");
     const outputPath = path.join(__dirname, "test.webp");
     await expect(setImage(inputPath, outputPath)).rejects.toThrow();
   });
@@ -135,12 +136,12 @@ describe("setThumbnail()", () => {
   beforeEach(() => {
     sandbox = sinon.createSandbox();
 
-    sandbox.stub(process.env, "IMG_URL").value("img/");
+    sandbox.stub(process.env, "THUMB_URL").value("img/");
     sandbox.stub(process.env, "THUMB_WIDTH").value(200);
     sandbox.stub(process.env, "THUMB_HEIGHT").value(200);
     sandbox.stub(process.env, "THUMB_FIT").value("cover");
     sandbox.stub(process.env, "THUMB_POSITION").value("center");
-    sandbox.stub(process.env, "THUMB_EXT").value("jpeg");
+    sandbox.stub(process.env, "THUMB_EXT").value("webp");
   });
 
   afterEach(() => {
@@ -148,8 +149,8 @@ describe("setThumbnail()", () => {
   });
 
   test("should default to the process environment variables for the width & height if none are provided", async () => {
-    const input = "test.jpg";
-    const output = "img/test_thumb.jpg";
+    const input = "node.png";
+    const output = "test.webp";
     const resizeSpy = sandbox.spy(sharp.prototype, "resize");
     const toFormatSpy = sandbox.spy(sharp.prototype, "toFormat");
     const toFileSpy = sandbox.spy(sharp.prototype, "toFile");
@@ -157,7 +158,7 @@ describe("setThumbnail()", () => {
     await setThumbnail(input, output);
 
     expect(resizeSpy.calledOnceWithExactly(200, 200, { fit: "cover", position: "center" })).toBe(false);
-    expect(toFormatSpy.calledOnceWithExactly("jpeg")).toBe(false);
+    expect(toFormatSpy.calledOnceWithExactly("webp")).toBe(false);
     expect(toFileSpy.calledOnceWithExactly(output)).toBe(false);
   });
 });
