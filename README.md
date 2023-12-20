@@ -96,4 +96,5 @@ Setters part :
 ## Tests
 
 You can run unit tests with Jest :
-npm test -- --coverage
+NPM : `npm test`  
+Yarn : `yarn test`
