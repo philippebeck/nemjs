@@ -10,7 +10,7 @@
  */
 exports.setAuth = async (password, user, res) => {
   const { JWT, JWT_DURATION, LOGIN_EMAIL, LOGIN_PASS } = process.env;
-  const { id, pass } = user;
+  const { id, pass } = user ?? {};
 
   const bcrypt  = require("bcrypt");
   const jwt     = require("jsonwebtoken");
