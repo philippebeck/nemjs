@@ -72,7 +72,7 @@ Setters part :
 -   **setImage(inputImg, outputImg, width, height)** : set image  
 -   **setThumbnail(inputImg, outputImg, width, height)** : set thumbnail  
 
----
+---will
 
 ## Usage
 
@@ -95,6 +95,6 @@ Setters part :
 
 ## Tests
 
-You can run unit tests with Jest :
+You can run unit tests with Jest :  
 NPM : `npm test`  
 Yarn : `yarn test`
