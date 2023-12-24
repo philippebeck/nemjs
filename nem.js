@@ -1,4 +1,4 @@
-/*! nemjs v2.1.0 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
+/*! nemjs v2.1.3 | https://www.npmjs.com/package/nemjs | Apache-2.0 License */
 
 "use strict";
 
@@ -189,7 +189,7 @@ exports.getPassword = () => {
  */
 exports.setAuth = async (password, user, res) => {
   const { JWT, JWT_DURATION, LOGIN_EMAIL, LOGIN_PASS } = process.env;
-  const { id, pass } = user;
+  const { id, pass } = user ?? {};
 
   const bcrypt  = require("bcrypt");
   const jwt     = require("jsonwebtoken");
@@ -229,14 +229,14 @@ exports.setImage = async (input, output) => {
  * @param {number} [width=process.env.THUMB_WIDTH] - The width of the thumbnail
  * @param {number} [height=process.env.THUMB_HEIGHT] - The height of the thumbnail
  */
-exports.setThumbnail = (input, output, width = process.env.THUMB_WIDTH, height = process.env.THUMB_HEIGHT) => {
+exports.setThumbnail = async (input, output, width = process.env.THUMB_WIDTH, height = process.env.THUMB_HEIGHT) => {
   const { IMG_EXT, IMG_URL, THUMB_FIT, THUMB_POSITION, THUMB_URL } = process.env;
   const sharp = require("sharp");
 
-  sharp(IMG_URL + input)
+  await sharp(IMG_URL + input)
     .resize(parseInt(width, 10), parseInt(height, 10), { fit: THUMB_FIT, position: THUMB_POSITION })
     .toFormat(IMG_EXT)
     .toFile(THUMB_URL + output);
 }
 
-/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 17th Dec 2023 */
+/*! Author: Philippe Beck <philippe@philippebeck.net> | Updated: 24th Dec 2023 */
